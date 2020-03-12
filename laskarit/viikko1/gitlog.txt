@@ -1,0 +1,97 @@
+commit 2eca5052e59316a5a8af5df6eb527e9c0cc4b9f5
+Author: Ville Manninen <vw.manninen@gmail.com>
+Date:   Thu Mar 12 18:50:39 2020 +0200
+
+    commited alot
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ tiedostoja/file3             | 2 ++
+ 3 files changed, 2 insertions(+)
+
+commit dc8da8705556e80b757e3d6f2bfed55132625fb4
+Author: Ville Manninen <vw.manninen@gmail.com>
+Date:   Thu Mar 12 18:47:49 2020 +0200
+
+    added file1, file2, file3
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 5e8aa1457a217f4dc45f13c5cece7413071ef6fd
+Author: Ville Manninen <vw.manninen@gmail.com>
+Date:   Thu Mar 12 18:39:40 2020 +0200
+
+    edited eka.txt and kolmas.txt
+
+ eka.txt    | 12 +++++++++---
+ kolmas.txt |  4 +++-
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+commit 94948c991b2383a48be34664d79c32bc30b56bf4
+Author: Ville Manninen <vw.manninen@gmail.com>
+Date:   Thu Mar 12 18:35:18 2020 +0200
+
+    deleted toinen.txt and renamed tiedosto.txt -> eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ toinen.txt              | 1 -
+ 2 files changed, 1 deletion(-)
+
+commit 16aecc07fa0692558deb23c91ca6732210a3a365
+Author: Ville Manninen <vw.manninen@gmail.com>
+Date:   Thu Mar 12 18:31:38 2020 +0200
+
+    modified tiedosto.txt
+
+ tiedosto.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit e7cca2201a1c0b078ad14b046dd815ae1d0f9a74
+Author: Viltska <vw.manninen@gmail.com>
+Date:   Thu Mar 12 18:18:05 2020 +0200
+
+    lisätty hakemisto 'stuff'
+
+ stuff/jokin.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 21dadf4063245969a9f73abe0a577b54ff6d9290
+Author: Viltska <vw.manninen@gmail.com>
+Date:   Thu Mar 12 18:17:17 2020 +0200
+
+    muokattu toinen.txt ja kolmas.txt
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 72e45f872d76958adb8c4233252dd7193fb365a9
+Author: Viltska <vw.manninen@gmail.com>
+Date:   Thu Mar 12 18:15:28 2020 +0200
+
+    lisätty kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b229d275ee3476b85df668924543a30ad985ed89
+Author: Viltska <vw.manninen@gmail.com>
+Date:   Thu Mar 12 18:12:46 2020 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 992b90071b5923f1a9683780cfeffacabdeb634d
+Author: Viltska <vw.manninen@gmail.com>
+Date:   Thu Mar 12 18:09:43 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
