@@ -5,6 +5,6 @@
 
 ## VIIKKO 1
 
-https://github.com/Viltska/ot-harkka/blob/master/laskarit/viikko1/gitlog.txt "gitlog.txt"
+[täältä](https://github.com/Viltska/ot-harkka/blob/master/laskarit/viikko1/gitlog.txt)
 
 https://github.com/Viltska/ot-harkka/blob/master/laskarit/viikko1/komentorivi.txt
