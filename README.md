@@ -1,8 +1,9 @@
-**README**
+**Ohjelmistotekniikka**
+@Viltska
 
-School project by @Viltska
+**Tehtavat*
 
-**LINKS**
+**VIIKKO 1**
 
 https://github.com/Viltska/ot-harkka/blob/master/laskarit/viikko1/gitlog.txt
 
