@@ -1,9 +1,9 @@
-**Ohjelmistotekniikka**
-@Viltska
+# Ohjelmistotekniikka
+:shipit:
 
-**Tehtavat*
+## Tehtavat
 
-**VIIKKO 1**
+## VIIKKO 1
 
 https://github.com/Viltska/ot-harkka/blob/master/laskarit/viikko1/gitlog.txt
 
