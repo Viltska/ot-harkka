@@ -6,7 +6,7 @@
 
 ## Tehtavat
 
-### Viikko 1
+## Viikko 1
 
 [gitlog.txt](https://github.com/Viltska/ot-harkka/blob/master/laskarit/viikko1/gitlog.txt)
 
