@@ -1,6 +1,9 @@
 # Ohjelmistotekniikka
 **Ville Manninen**
 
+## Harjoitustyö
+[Minesweeper](https://github.com/Viltska/ot-harkka/tree/master/ot-minesweeper)
+
 ## Tehtavat
 
 ## Viikko 1
