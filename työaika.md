@@ -1,8 +1,8 @@
 # työaikakirjanpito
 
-| viikko | aika | mitä tein  |
+|**viikko**|**aika**|**mitä tein**|
 | :----: |:-----| :-----|
-| 1      | 6    | Aiheen valitseminen, Ohjelman aloitus, Määrittelydokumentti, viikko1 laskarit|
+| 1      | 6    | Aiheen valitseminen, Ohjelman aloitus, Määrittelydokumentti, viikko1 laskarit.|
 | 2      | 0    |       |
 | 3      | 0    |       |
 | 4      | 0    |       |
