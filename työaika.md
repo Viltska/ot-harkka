@@ -2,11 +2,11 @@
 
 | viikko | aika | mitä tein  |
 | :----: |:-----| :-----|
-|14.03   | 4    | Aiheen valitseminen, Ohjelman aloitus, Määrittelydokumentti, viikko1 laskarit|
-|        | 0    |       |
-|        | 0    |       |
-|        | 0    |       |
-|        | 0    |       |
-|        | 0    |       |
-|        | 0   |       |
-| yht    | 4   |       |
+| 1      | 6    | Aiheen valitseminen, Ohjelman aloitus, Määrittelydokumentti, viikko1 laskarit|
+| 2      | 0    |       |
+| 3      | 0    |       |
+| 4      | 0    |       |
+| 5      | 0    |       |
+| 6      | 0    |       |
+| 7      | 0    |       |
+| yht.   | 6    |       |
