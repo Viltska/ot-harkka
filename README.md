@@ -2,9 +2,11 @@
 **Ville Manninen**
 
 ## Harjoitustyö
+[Määrittelydokumentti](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/maarittely.md)
 [Minesweeper](https://github.com/Viltska/ot-harkka/tree/master/ot-minesweeper)
 
 ## Tehtavat
+[työaika](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/tyoaika.md)
 
 ## Viikko 1
 
