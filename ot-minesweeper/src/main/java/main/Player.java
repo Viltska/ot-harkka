@@ -1,16 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
+/**
+ * Represents a player of the game
+ *
+ * @since 1.0
+ * @author Ville Manninen
+ */
 public class Player {
 
     private static String name;
 
     /**
-     * Creates a new Player
+     * Creates a new Player with a name.
      *
      * @param name - name of the player
      */
@@ -19,18 +20,19 @@ public class Player {
     }
 
     /**
-     * Returns the name of the Player
+     * Returns the name of the Player.
      *
-     * @return player name
+     * @return String name - Player name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Overrides method toString()
+     * Overrides method toString(). Method converts player class to a String
+     * representation.
      *
-     * @return "Player: " + this.name
+     * @return String "Player: " + this.name
      */
     @Override
     public String toString() {

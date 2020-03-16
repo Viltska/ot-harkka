@@ -2,6 +2,12 @@ package main;
 
 import java.util.Random;
 
+/**
+ * Class that represents a game of minesweeper without a GUI
+ *
+ * @since 1.0
+ * @author Ville Manninen
+ */
 public class Game {
 
     private static int[][] grid;
@@ -9,26 +15,24 @@ public class Game {
     private static final int WIDTH = 10;
     private static int mines;
     private static int turn;
-    private static boolean gameover;
+    private static boolean gameOver;
 
     /**
-     * Creates a single instance of a game of Minesweeper method newGame() needs
-     * to be called to initialize the game correctly
+     * Creates a game of minesweeper with WIDTH x WIDTH grid. Width is equal to
+     * 10. holding 30 mines starting at turn 1.
      */
     public Game() {
         this.grid = new int[WIDTH][WIDTH];
         this.mines = 30;
-        this.gameover = false;
+        this.gameOver = false;
         this.turn = 1;
 
     }
 
     /**
-     * Starts a new game of Minesweeper 20x20 int 2D-array filled with 30 mines
-     * mines are represented with a number 1 and empty squares as 0
+     * Fills the grid with int value 0 and then places 30 mines randomly.
      *
-     * Mines are placed randomly using java.util.Random with a int bound of
-     * WIDTH
+     * @since 1.0
      */
     public void newGame() {
         for (int i = 0; i < WIDTH; i++) {
@@ -49,65 +53,39 @@ public class Game {
     }
 
     /**
-     * Creates a player for the game
-     *
-     * @param name - name of the Player
+     * Method to increment the turn parameter by 1. If the incremented turn is
+     * equal to empty squares of the game method calls setGameOver(); ending the
+     * game.
      */
-    public void setPlayer(String name) {
-        Player player = new Player(name);
-        this.player = player;
-    }
-
-    /**
-     * Method returns player of the game and returns null if no player is set
-     *
-     * @return Player - player of the game
-     */
-    public Player getPlayer() {
-        return this.player;
-    }
-
-    /**
-     * Adds a new turn, if all empty squares are found calls method
-     * setGameOver();
-     */
-    public void newTurn() {
+    public void nextTurn() {
         turn++;
         if (turn == ((WIDTH * WIDTH) - this.mines)) {
             setGameOver();
         }
     }
 
-    /**
-     * Returns the current number of turn
-     *
-     * @return turn - current turn
-     */
     public int getTurn() {
         return this.turn;
     }
 
-    /**
-     * Method to set gameover to true;
-     */
     public void setGameOver() {
-        this.gameover = true;
+        this.gameOver = true;
     }
 
     /**
-     * Returns true if game is over
+     * Returns true if game is over else returns false.
      *
-     * @return boolean - return Game parameter gameover
+     * @return boolean - return Game parameter gameOver
      */
     public boolean getGameover() {
-        return this.gameover;
+        return this.gameOver;
     }
 
     /**
-     * Method for checking if a square holds a mine
+     * Method for checking if a square holds a mine.
      *
-     * @param x int value for the height coordinate
-     * @param y int value for the width coordinate
+     * @param x - height coordinate
+     * @param y - width coordinate
      * @return true if square if a mine else returns false
      */
     public boolean checkForMine(int x, int y) {
@@ -117,11 +95,11 @@ public class Game {
     }
 
     /**
-     * Method for checking the number on neighbouring squares that hold a mine
+     * Method for checking the number on neighbouring squares that hold a mine.
      *
-     * @param x int value for the height coordinate
-     * @param y int value for the width coordinate
-     * @return int number of neighbour squares that hold a mine
+     * @param x - height coordinate
+     * @param y - width coordinate
+     * @return int - number of neighbour squares that hold a mine.
      */
     public int checkNeighbours(int x, int y) {
         int mines = 0;
@@ -142,42 +120,41 @@ public class Game {
     }
 
     /**
-     * Checks if given coordinate values are inside the game grid
+     * Checks if given coordinate values are inside the game grid.
      *
-     * @param x int value for the height coordinate
-     * @param y int value for the width coordinate
+     * @param x - height coordinate
+     * @param y - width coordinate
      * @return true if x and y values are inside the grid
      */
     public boolean checkInsideGrid(int x, int y) {
         return x >= 0 && x <= WIDTH && y >= 0 && y <= WIDTH;
     }
 
-    /**
-     * Prints the game to console
-     */
-    public void consolePrintGame() {
+    public void setPlayer(String name) {
+        Player player = new Player(name);
+        this.player = player;
+    }
 
-        if (getPlayer() != null) {
-            System.out.println("Player: " + player.getName() + " Turn: " + this.turn);
-        } else {
-            System.out.println("Turn: " + this.turn);
-        }
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                System.out.print(grid[i][j] + " ");
-            }
-            System.out.println("");
-        }
+    public Player getPlayer() {
+        return this.player;
     }
 
     /**
      * Returns a String representation of the current game 1 equals a mine and 0
      * equals no mine Overrides the method toString()
      *
-     * @return String representation of the game
+     * @return String - representation of the game as a String
      */
     @Override
     public String toString() {
-        return "PLACE HOLDER";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < WIDTH; j++) {
+                sb.append(grid[i][j]);
+
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }
