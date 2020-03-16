@@ -10,9 +10,11 @@ import main.*;
  */
 public class GUI {
 
+    private static boolean running;
     private static Game game;
 
     public GUI() {
+        this.running = false;
 
     }
 
@@ -20,7 +22,15 @@ public class GUI {
      * Method for starting the GUI
      */
     public void start() {
+        running = true;
 
+    }
+
+    /**
+     * Method for closing the GUI
+     */
+    public void close() {
+        running = false;
     }
 
 }
