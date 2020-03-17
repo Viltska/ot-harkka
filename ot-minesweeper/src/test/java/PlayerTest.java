@@ -23,10 +23,10 @@ public class PlayerTest {
         Player player = new Player(name);
         assertEquals("testName", player.getName());
     }
-    /**
-     *  Test for toString() method.
-     */
 
+    /**
+     * Test for toString() method.
+     */
     @Test
     public void testToString() {
         String name = "testName";

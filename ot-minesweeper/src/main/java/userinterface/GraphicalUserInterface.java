@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package userinterface;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -23,11 +22,11 @@ import main.*;
  *
  * @author Ville Manninen
  */
-public class GUI extends Application {
+public class GraphicalUserInterface extends Application {
 
     private static Stage stage;
     private int WIDTH;
-    private Game game = new Game();
+    private GameLogic game = new GameLogic();
     private Button[][] buttons;
 
     @Override

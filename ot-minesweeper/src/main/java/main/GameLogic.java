@@ -3,11 +3,11 @@ package main;
 import java.util.Random;
 
 /**
- * Class that represents a game of minesweeper without a GUI
+ * Class to execute game situation and logic
  *
  * @author Ville Manninen
  */
-public class Game {
+public class GameLogic {
 
     private static int[][] grid;
     private static Player player;
@@ -20,7 +20,7 @@ public class Game {
      * Creates a game of minesweeper with WIDTH x WIDTH grid. Width is equal to
      * 10. holding 30 mines starting at turn 1.
      */
-    public Game() {
+    public GameLogic() {
         this.grid = new int[WIDTH][WIDTH];
         this.mines = 30;
         this.gameOver = false;
@@ -31,7 +31,6 @@ public class Game {
     /**
      * Fills the grid with int value 0 and then places 30 mines randomly.
      *
-     * @since 1.0
      */
     public void newGame() {
         for (int i = 0; i < WIDTH; i++) {
@@ -52,9 +51,9 @@ public class Game {
     }
 
     /**
-     * Method to increment the turn parameter by 1. If the incremented turn is
-     * equal to empty squares of the game method calls setGameOver(); ending the
-     * game.
+     * Method to advance to next turn. If incremented turn is equal to empty
+     * squares of the game method calls setGameOver(); ending the game.
+     *
      */
     public void nextTurn() {
         turn++;
@@ -153,7 +152,7 @@ public class Game {
      * Returns a String representation of the current game 1 equals a mine and 0
      * Used to print game situation to console.
      *
-     * convetion: 1 = mine while 0 = empty
+     * number 1 represents a mine and 0 a empty square.
      *
      * @return String - game situation as a String representation
      */

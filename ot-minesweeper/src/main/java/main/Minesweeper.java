@@ -1,6 +1,6 @@
 package main;
 
-import GUI.GUI;
+import userinterface.GraphicalUserInterface;
 import javafx.application.Application;
 
 /**
@@ -12,13 +12,14 @@ import javafx.application.Application;
 public class Minesweeper {
 
     /**
-     * Main class
+     * Main class launches JavaFX Application class GUI.java. does not expect
+     * any arguments.
      *
      * @since 1.0
-     * @param args
+     * @param args - Arguments not expected
      */
     public static void main(String args[]) {
-        Application.launch(GUI.class, args);
+        Application.launch(GraphicalUserInterface.class, args);
 
     }
 }

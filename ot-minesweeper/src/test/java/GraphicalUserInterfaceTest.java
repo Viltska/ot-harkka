@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import GUI.GUI;
+import userinterface.GraphicalUserInterface;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,10 +17,10 @@ import static org.junit.Assert.*;
  *
  * @author Ville Manninen
  */
-public class GUITest {
+public class GraphicalUserInterfaceTest {
 
     @Test
     public void testCompile() {
-        GUI gui = new GUI();
+        GraphicalUserInterface gui = new GraphicalUserInterface();
     }
 }

@@ -1,5 +1,5 @@
 
-import main.Game;
+import main.GameLogic;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,9 +13,9 @@ import static org.junit.Assert.*;
  * @since 1.0
  * @author Ville Manninen
  */
-public class GameTest {
+public class GameLogicTest {
 
-    public GameTest() {
+    public GameLogicTest() {
     }
 
     /**
@@ -23,6 +23,6 @@ public class GameTest {
      */
     @Test
     public void testCreatingClass() {
-        Game game = new Game();
+        GameLogic game = new GameLogic();
     }
 }
