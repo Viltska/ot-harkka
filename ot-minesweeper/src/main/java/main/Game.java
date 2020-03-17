@@ -12,7 +12,7 @@ public class Game {
 
     private static int[][] grid;
     private static Player player;
-    private static final int WIDTH = 10;
+    private static final int WIDTH = 20;
     private static int mines;
     private static int turn;
     private static boolean gameOver;
@@ -89,9 +89,7 @@ public class Game {
      * @return true if square if a mine else returns false
      */
     public boolean checkForMine(int x, int y) {
-
         return grid[y][x] == 1;
-
     }
 
     /**
