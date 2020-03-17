@@ -1,6 +1,7 @@
 package main;
 
 import GUI.GUI;
+import javafx.application.Application;
 
 /**
  * Holds main class
@@ -17,11 +18,7 @@ public class Minesweeper {
      * @param args
      */
     public static void main(String args[]) {
-        GUI gui = new GUI();
-
-        System.out.println("Minesweeper version 1.0");
-        Game game = new Game();
-        game.newGame();
-        System.out.println(game.toString());
+        Application.launch(GUI.class, args);
+        
     }
 }
