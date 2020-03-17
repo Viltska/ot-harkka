@@ -16,7 +16,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import main.Game;
+import main.*;
 
 /**
  * Graphical user interface for creating and playing minesweeper.
@@ -26,12 +26,16 @@ import main.Game;
 public class GUI extends Application {
 
     private static Stage stage;
+    private int WIDTH;
     private Game game = new Game();
+    private Button[][] buttons;
 
     @Override
     public void start(Stage primaryStage) {
         Scene startingScene = getStartScene();
         this.stage = primaryStage;
+        this.buttons = new Button[20][20];
+        this.WIDTH = game.getWIDTH();
 
         stage.setTitle("Minesweeper");
         stage.setResizable(false);
@@ -62,7 +66,7 @@ public class GUI extends Application {
         StackPane root = new StackPane();
         root.getChildren().add(newGameBtn);
 
-        Scene startingScene = new Scene(root, 800, 800);
+        Scene startingScene = new Scene(root, 600, 600);
 
         return startingScene;
 
@@ -80,11 +84,12 @@ public class GUI extends Application {
         Text turnTxt = new Text("Turn: " + game.getTurn());
         GridPane gp = new GridPane();
 
-        for (int i = 0; i < 20; i++) {
-            for (int j = 0; j < 20; j++) {
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < WIDTH; j++) {
                 Button btn;
                 if (game.checkForMine(i, j)) {
-                    btn = new Button("  ");
+                    String s = "" + game.checkNeighbours(i, j);
+                    btn = new Button(s);
                     btn.setPrefHeight(30);
                     btn.setPrefWidth(30);
                     btn.setOnAction(new EventHandler<ActionEvent>() {
@@ -98,13 +103,13 @@ public class GUI extends Application {
                         }
                     });
                 } else {
-                    btn = new Button("  ");
+                    String s = "" + game.checkNeighbours(i, j);
+                    btn = new Button(s);
                     btn.setPrefHeight(30);
                     btn.setPrefWidth(30);
                     btn.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent event) {
-                            btn.setText("O");
                             btn.setDisable(true);
                             game.nextTurn();
                             turnTxt.setText("Turn: " + game.getTurn());
@@ -114,7 +119,7 @@ public class GUI extends Application {
                 gp.add(btn, i, j);
             }
         }
-        
+
         vb.getChildren().add(turnTxt);
         vb.getChildren().add(gp);
 

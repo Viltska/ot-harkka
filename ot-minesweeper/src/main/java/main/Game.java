@@ -5,7 +5,6 @@ import java.util.Random;
 /**
  * Class that represents a game of minesweeper without a GUI
  *
- * @since 1.0
  * @author Ville Manninen
  */
 public class Game {
@@ -86,7 +85,7 @@ public class Game {
      *
      * @param x - height coordinate
      * @param y - width coordinate
-     * @return true if square if a mine else returns false
+     * @return boolean - true if square if a mine else false
      */
     public boolean checkForMine(int x, int y) {
         return grid[y][x] == 1;
@@ -97,24 +96,28 @@ public class Game {
      *
      * @param x - height coordinate
      * @param y - width coordinate
-     * @return int - number of neighbour squares that hold a mine.
+     * @return minesFound - int number of neighbour squares that hold a mine.
      */
     public int checkNeighbours(int x, int y) {
-        int mines = 0;
+        int minesFound;
+
+        // Checks if middle coordinate holds a mine
+        if (checkForMine(x, y)) {
+            minesFound = -1;
+        } else {
+            minesFound = 0;
+        }
+
         for (int i = x - 1; i <= x + 1; i++) {
             for (int j = y - 1; j <= y + 1; j++) {
                 if (checkInsideGrid(i, j)) {
-
                     if (checkForMine(i, j)) {
-                        mines++;
+                        minesFound++;
                     }
                 }
             }
         }
-        if (checkForMine(x, y)) {
-            mines--;
-        }
-        return mines;
+        return minesFound;
     }
 
     /**
@@ -122,13 +125,22 @@ public class Game {
      *
      * @param x - height coordinate
      * @param y - width coordinate
-     * @return true if x and y values are inside the grid
+     * @return boolean - true if x and y values are inside the grid
      */
     public boolean checkInsideGrid(int x, int y) {
-        return x >= 0 && x <= WIDTH && y >= 0 && y <= WIDTH;
+        return x >= 0 && x < WIDTH && y >= 0 && y < WIDTH;
     }
 
-    public void setPlayer(String name) {
+    public int getWIDTH() {
+        return WIDTH;
+    }
+
+    /**
+     * Creates a player
+     *
+     * @param name - name of the player
+     */
+    public void createPlayer(String name) {
         Player player = new Player(name);
         this.player = player;
     }
@@ -139,9 +151,11 @@ public class Game {
 
     /**
      * Returns a String representation of the current game 1 equals a mine and 0
-     * equals no mine Overrides the method toString()
+     * Used to print game situation to console.
      *
-     * @return String - representation of the game as a String
+     * convetion: 1 = mine while 0 = empty
+     *
+     * @return String - game situation as a String representation
      */
     @Override
     public String toString() {
@@ -149,7 +163,7 @@ public class Game {
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < WIDTH; j++) {
                 sb.append(grid[i][j]);
-
+                sb.append(" ");
             }
             sb.append("\n");
         }
