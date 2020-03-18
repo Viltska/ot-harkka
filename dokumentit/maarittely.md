@@ -16,6 +16,9 @@ Aloitusnäkymässä käyttäjä antaa nimensä ja valitsee uuden pelin aloittami
 
 ## Perusversion tarjoama toiminnallisuus
 
+Yksinkertainen käyttöliittymän kautta toimiva miinaharava peli joka pitää muistissa aikaisemmat pelaajan tulokset. 
 
 ## Jatkokehitysideoita
+
+Pelin grafiikkaa voidaan hioa sekä joitain ASCII-merkkejä korvata kuvilla, esimerkiksi miina- ja varoitusmerkit.
 
