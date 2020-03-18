@@ -1,9 +1,10 @@
 package main;
 
 import java.util.Random;
+import java.util.Timer;
 
 /**
- * Class to execute game situation and logic
+ * Class to execute game logic
  *
  * @author Ville Manninen
  */
@@ -11,21 +12,36 @@ public class GameLogic {
 
     private static int[][] grid;
     private static Player player;
-    private static final int WIDTH = 20;
+    private static int WIDTH = 20;
     private static int mines;
     private static int turn;
     private static boolean gameOver;
+    private Timer timer;
+    private int seconds;
 
     /**
-     * Creates a game of minesweeper with WIDTH x WIDTH grid. Width is equal to
-     * 10. holding 30 mines starting at turn 1.
+     * Creates a default game of minesweeper with WIDTH x WIDTH grid. Width is
+     * equal to 10. holding 30 mines starting at turn 1.
      */
     public GameLogic() {
-        this.grid = new int[WIDTH][WIDTH];
+        this.grid = new int[this.WIDTH][this.WIDTH];
         this.mines = 30;
         this.gameOver = false;
         this.turn = 1;
+    }
 
+    /**
+     * Creates a game of minesweeper with custom WIDTH and a number of mines.
+     *
+     * @param WIDTH - width and height of the grid
+     * @param mines - number of mines inside the gird
+     */
+    public GameLogic(int WIDTH, int mines) {
+        this.WIDTH = WIDTH;
+        this.grid = new int[WIDTH][WIDTH];
+        this.mines = mines;
+        this.gameOver = false;
+        this.turn = 1;
     }
 
     /**
@@ -48,6 +64,38 @@ public class GameLogic {
                 minesLeft--;
             }
         }
+    }
+
+    /**
+     * Method to count how many seconds the game has lasted.
+     *
+     */
+    public void startTimer() {
+        try {
+            while (!gameOver) {
+                seconds++;
+                // 1000 milliseconds or 1 second
+                Thread.sleep(1000);
+            }
+        } catch (InterruptedException e) {
+        }
+    }
+
+    /**
+     * Sets game clock to 0.
+     */
+    public void resetClock() {
+        this.seconds = 0;
+
+    }
+
+    /**
+     * Method to get the current game time in seconds.
+     *
+     * @return seconds - elapsed game time in seconds
+     */
+    public int getClock() {
+        return this.seconds;
     }
 
     /**
@@ -130,6 +178,11 @@ public class GameLogic {
         return x >= 0 && x < WIDTH && y >= 0 && y < WIDTH;
     }
 
+    /**
+     * Method to get WIDTH of the game.
+     *
+     * @return WIDTH - game width
+     */
     public int getWIDTH() {
         return WIDTH;
     }
@@ -139,11 +192,16 @@ public class GameLogic {
      *
      * @param name - name of the player
      */
-    public void createPlayer(String name) {
+    public void setPlayer(String name) {
         Player player = new Player(name);
         this.player = player;
     }
 
+    /**
+     * Method to get the player of the game.
+     *
+     * @return Player - player of the game
+     */
     public Player getPlayer() {
         return this.player;
     }
