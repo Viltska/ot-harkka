@@ -4,7 +4,7 @@
 ## Harjoitustyö
 [Määrittelydokumentti](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/maarittely.md)
 
-[Minesweeper](https://github.com/Viltska/ot-harkka/tree/master/ot-minesweeper)
+[Minesweeper](https://github.com/Viltska/ot-minesweeper/tree/master/minesweeper)
 
 ## Tehtavat
 [Työaika](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/tyoaika.md)
