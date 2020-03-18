@@ -1,7 +1,7 @@
 # Ohjelmistotekniikka
 **Ville Manninen**
 
-[Työajan kirjanpito](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/tyoaika.md)
+[Työajankirjanpito](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/tyoaika.md)
 
 ## Harjoitustyö
 [Määrittelydokumentti](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/maarittely.md)
