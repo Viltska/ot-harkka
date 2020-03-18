@@ -1,6 +1,6 @@
 # työaikakirjanpito
 
-|**viikko**|**aika(h)**|**mitä tein**|
+|**Viikko**|**Aika (h)**|**Mitä tein**|
 | :----: |:-----| :-----|
 | 1      | 24   | Aiheen valitseminen, Ohjelman aloitus, Määrittelydokumentti, viikko 1-laskarit.|
 | 2      | 6    | Ohjelman runko luotu.|
