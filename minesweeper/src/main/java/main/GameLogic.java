@@ -20,8 +20,8 @@ public class GameLogic {
     private int seconds;
 
     /**
-     * Creates a default game of minesweeper with WIDTH x WIDTH grid. Width is
-     * equal to 10. holding 30 mines starting at turn 1.
+     * Creates a default game of minesweeper with WIDTH wide square grid. Width
+     * is equal to 10. holding 30 mines starting at turn 1.
      */
     public GameLogic() {
         this.grid = new int[this.WIDTH][this.WIDTH];
@@ -31,13 +31,11 @@ public class GameLogic {
     }
 
     /**
-     * Creates a game of minesweeper with custom WIDTH and a number of mines.
+     * Creates a game of minesweeper with custom number of mines.
      *
-     * @param WIDTH - width and height of the grid
      * @param mines - number of mines inside the gird
      */
-    public GameLogic(int WIDTH, int mines) {
-        this.WIDTH = WIDTH;
+    public GameLogic(int mines) {
         this.grid = new int[WIDTH][WIDTH];
         this.mines = mines;
         this.gameOver = false;
@@ -45,7 +43,8 @@ public class GameLogic {
     }
 
     /**
-     * Fills the grid with int value 0 and then places 30 mines randomly.
+     * Fills the grid with int value 0 and then places 30 mines randomly. 1
+     * represents a mine and 0 represents an empty square.
      *
      */
     public void newGame() {
@@ -63,21 +62,6 @@ public class GameLogic {
                 grid[iRandom][jRandom] = 1;
                 minesLeft--;
             }
-        }
-    }
-
-    /**
-     * Method to count how many seconds the game has lasted.
-     *
-     */
-    public void startTimer() {
-        try {
-            while (!gameOver) {
-                seconds++;
-                // 1000 milliseconds or 1 second
-                Thread.sleep(1000);
-            }
-        } catch (InterruptedException e) {
         }
     }
 

@@ -3,7 +3,6 @@ package main;
 /**
  * Represents a player of the game.
  *
- * @since 1.0
  * @author Ville Manninen
  */
 public class Player {

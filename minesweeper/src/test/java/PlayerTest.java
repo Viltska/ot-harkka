@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Tests for the class Player
+ * Tests for the class Player.
  *
  * @version 1.0
  * @author Ville Manninen
@@ -15,7 +15,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test for getName();
+     * Test for method getName.
      */
     @Test
     public void testPlayerName() {
@@ -25,7 +25,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test for toString() method.
+     * Test for method toString.
      */
     @Test
     public void testToString() {
