@@ -21,10 +21,15 @@ public class PlayerTest {
         Player player = new Player(name);
         assertEquals("testName", player.getName());
 
+        String empty = "";
+
+        Player player2 = new Player(empty);
+        assertEquals("", player2.getName());
+
         String wayTooLong = "AAAAAAAAABBBBBBBBBBBCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDEEEEEEEEEEEEEEEEEE";
         boolean nameTrim = false;
-        Player player2 = new Player(wayTooLong);
-        if (player2.getName().length() == 20) {
+        Player player3 = new Player(wayTooLong);
+        if (player3.getName().length() == 20) {
             nameTrim = true;
         }
         assertEquals(true, nameTrim);
