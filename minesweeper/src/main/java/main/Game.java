@@ -4,11 +4,12 @@ import java.util.Random;
 import java.util.Timer;
 
 /**
- * Class to execute game logic
+ * Class for creating a new game of minesweeper represented by a 2D-array.
+ *
  *
  * @author Ville Manninen
  */
-public class GameLogic {
+public class Game {
 
     private static int[][] grid;
     private static Player player;
@@ -16,17 +17,18 @@ public class GameLogic {
     private static int mines;
     private static int turn;
     private static boolean gameOver;
-    private Timer timer;
+    private static boolean gameWon;
     private int seconds;
 
     /**
      * Creates a default game of minesweeper with WIDTH wide square grid. Width
      * is equal to 10. holding 30 mines starting at turn 1.
      */
-    public GameLogic() {
+    public Game() {
         this.grid = new int[this.WIDTH][this.WIDTH];
         this.mines = 30;
         this.gameOver = false;
+        this.gameWon = true;
         this.turn = 1;
     }
 
@@ -35,7 +37,7 @@ public class GameLogic {
      *
      * @param mines - number of mines inside the gird
      */
-    public GameLogic(int mines) {
+    public Game(int mines) {
         this.grid = new int[WIDTH][WIDTH];
         this.mines = mines;
         this.gameOver = false;
@@ -66,20 +68,16 @@ public class GameLogic {
     }
 
     /**
-     * Sets game clock to 0.
-     */
-    public void resetClock() {
-        this.seconds = 0;
-
-    }
-
-    /**
-     * Method to get the current game time in seconds.
+     * Method for manually placing a mine on the grid
      *
-     * @return seconds - elapsed game time in seconds
+     * @param x - width coordinate of the mine
+     * @param y - height coordinate of the mine
      */
-    public int getClock() {
-        return this.seconds;
+    public void setMine(int x, int y) {
+        if (!checkForMine(x, y)) {
+            grid[x][y] = 1;
+            mines++;
+        }
     }
 
     /**
@@ -88,18 +86,34 @@ public class GameLogic {
      *
      */
     public void nextTurn() {
-        turn++;
-        if (turn == ((WIDTH * WIDTH) - this.mines)) {
-            setGameOver();
-        }
+        this.turn++;
     }
 
+    /**
+     * Returns the current turn of the game.
+     *
+     * @return int - turn number
+     */
     public int getTurn() {
         return this.turn;
     }
 
+    public int getMines() {
+        return this.mines;
+    }
+
+    /**
+     * Sets game over to true.
+     */
     public void setGameOver() {
         this.gameOver = true;
+    }
+
+    /**
+     * Sets game won to true.
+     */
+    public void setGameWon() {
+        this.gameWon = true;
     }
 
     /**
@@ -112,6 +126,15 @@ public class GameLogic {
     }
 
     /**
+     * Returns true if the game is won, else returns false
+     *
+     * @return boolean - game won value
+     */
+    public boolean getGameWon() {
+        return this.gameWon;
+    }
+
+    /**
      * Method for checking if a square holds a mine.
      *
      * @param x - height coordinate
@@ -119,7 +142,7 @@ public class GameLogic {
      * @return boolean - true if square if a mine else false
      */
     public boolean checkForMine(int x, int y) {
-        return grid[y][x] == 1;
+        return grid[x][y] == 1;
     }
 
     /**
@@ -127,7 +150,7 @@ public class GameLogic {
      *
      * @param x - height coordinate
      * @param y - width coordinate
-     * @return minesFound - int number of neighbour squares that hold a mine.
+     * @return minesFound - number of neighbour squares that hold a mine.
      */
     public int checkNeighbours(int x, int y) {
         int minesFound;

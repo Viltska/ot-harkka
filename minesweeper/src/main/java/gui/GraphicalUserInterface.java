@@ -1,7 +1,8 @@
-package userinterface;
+package gui;
 
 //JavaFX
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -21,8 +22,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-// GameLogic
-import main.GameLogic;
+// Game
+import main.Game;
 
 /**
  * Graphical user interface for creating and playing minesweeper.
@@ -33,7 +34,7 @@ public class GraphicalUserInterface extends Application {
 
     private static Stage stage;
     private static int WIDTH;
-    private static GameLogic game = new GameLogic();
+    private static Game game = new Game();
     private static Text playerTxt;
     private static Text turnTxt;
     private static Button buttons[][];
@@ -53,6 +54,11 @@ public class GraphicalUserInterface extends Application {
         stage.setTitle("Minesweeper");
         stage.setScene(startingScene);
         stage.show();
+
+        stage.setOnCloseRequest(e -> {
+            Platform.exit();
+            System.exit(1);
+        });
     }
 
     /**

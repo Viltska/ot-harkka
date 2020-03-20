@@ -1,6 +1,6 @@
 package main;
 
-import userinterface.GraphicalUserInterface;
+import gui.GraphicalUserInterface;
 import javafx.application.Application;
 
 /**
@@ -9,7 +9,7 @@ import javafx.application.Application;
  * @version 1.0
  * @author Ville Manninen
  */
-public class Minesweeper {
+public class App {
 
     /**
      * Main class launches JavaFX Application class GUI.java. does not expect
@@ -20,5 +20,6 @@ public class Minesweeper {
      */
     public static void main(String args[]) {
         Application.launch(GraphicalUserInterface.class, args);
+
     }
 }
