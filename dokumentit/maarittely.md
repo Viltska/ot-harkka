@@ -4,9 +4,9 @@
 
 Sovellus suorittaa miinaharava peliä omassa ikkunassa, peliä voi pelata monta eri pelaajaa ja heidän aikaisemmat tulokset tallennetaan muistiin.
 
-## Käyttäjät
+## Käyttäjä
 
-Jokaiselle pelille löytyy pelaaja ja pelaajan tulokset pidetään muistissa.
+Käyttäjä antaa nimensä jonka perustella ohjelma löytää aikaisemmat huipputuloksen.
 
 ## Käyttöliittymäluonnos
 
@@ -20,5 +20,9 @@ Yksinkertainen käyttöliittymän kautta toimiva miinaharava peli joka pitää m
 
 ## Jatkokehitysideoita
 
-Pelin grafiikkaa voidaan hioa sekä joitain ASCII-merkkejä korvata kuvilla, esimerkiksi miina- ja varoitusmerkit.
+* Pelin grafiikkaa voidaan hioa korvaamalla ASCII-merkkejä kuvilla, esimerkiksi miina- ja varoitusmerkit.
+
+* Ohjelman automaattinen skaalaaminen näytön natiiviresoluution perustella.
+
+
 
