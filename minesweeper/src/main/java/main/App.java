@@ -1,6 +1,6 @@
 package main;
 
-import gui.GraphicalUserInterface;
+import gui.Gui;
 import javafx.application.Application;
 
 /**
@@ -19,7 +19,7 @@ public class App {
      * @param args - Arguments not expected
      */
     public static void main(String args[]) {
-        Application.launch(GraphicalUserInterface.class, args);
+        Application.launch(Gui.class, args);
 
     }
 }

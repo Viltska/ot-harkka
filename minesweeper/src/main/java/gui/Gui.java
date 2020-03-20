@@ -2,14 +2,13 @@ package gui;
 
 //JavaFX
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -19,10 +18,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-// Game
+// scr package imports
 import main.Game;
 
 /**
@@ -30,17 +28,17 @@ import main.Game;
  *
  * @author Ville Manninen
  */
-public class GraphicalUserInterface extends Application {
+public class Gui extends Application {
 
     private static Stage stage;
     private static int WIDTH;
     private static Game game = new Game();
-    private static Text playerTxt;
-    private static Text turnTxt;
+    private static Label playerTxt;
+    private static Label turnTxt;
     private static Button buttons[][];
 
     /**
-     * Executes the graphical user interface. Overrides method from Application.
+     * Executes the graphical user interface.
      *
      * @param Primarystage - Stage window
      */
@@ -51,25 +49,29 @@ public class GraphicalUserInterface extends Application {
         this.WIDTH = game.getWIDTH();
         this.buttons = new Button[WIDTH][WIDTH];
 
-        stage.setTitle("Minesweeper");
+        stage.setTitle("Minesweeper game 1.0");
         stage.setScene(startingScene);
         stage.show();
-
-        stage.setOnCloseRequest(e -> {
-            Platform.exit();
-            System.exit(1);
-        });
     }
 
     /**
-     * Method to generate and return a starting scene. Creates a new game.
+     * Method to generate and return a starting scene.
      *
      * @return Scene - starting scene
      */
     private Scene getStartScene() {
+        // Parent
+        VBox vb = new VBox();
+        vb.setAlignment(Pos.CENTER);
+        vb.setPadding(new Insets(80));
+        vb.setSpacing(40);
+
+        // Name label and text field
+        Label txt = new Label("Name:");
         TextField txtField = new TextField();
+
+        // New game button
         Button button = new Button("New Game");
-        Text txt = new Text("Player Name");
 
         EventHandler<MouseEvent> eventHandler = (MouseEvent e) -> {
             System.out.println(e);
@@ -80,35 +82,42 @@ public class GraphicalUserInterface extends Application {
         };
         button.setOnMouseClicked(eventHandler);
 
-        VBox vb = new VBox();
-        vb.setAlignment(Pos.CENTER);
-        vb.setPadding(new Insets(80));
-        vb.setSpacing(40);
-
         vb.getChildren().add(button);
-        vb.getChildren().add(txtField);
-        vb.getChildren().add(txt);
 
+        // HBox for name label and text field
+        HBox hb = new HBox();
+        hb.setAlignment(Pos.CENTER);
+        hb.setSpacing(20);
+        hb.setPadding(new Insets(40));
+
+        hb.getChildren().add(txt);
+        hb.getChildren().add(txtField);
+
+        vb.getChildren().add(hb);
+
+        // Scene
         Scene startingScene = new Scene(vb, 800, 800);
-
         return startingScene;
 
     }
 
     /**
-     * Method to generate and return a game scene. Calls method createSquares();
+     * Method to generate and return a game scene.
      *
      * @return Scene - the game scene.
      */
     private Scene getGameScene() {
-        VBox vb = new VBox();
-        vb.setAlignment(Pos.CENTER);
-        vb.setPadding(new Insets(40));
-        vb.setSpacing(20);
+        // Parent 
+        VBox parent = new VBox();
+        parent.setAlignment(Pos.CENTER);
+        parent.setPadding(new Insets(40));
+        parent.setSpacing(20);
 
+        // Top labels pane
         BorderPane bp = new BorderPane();
         bp.setPadding(new Insets(20));
 
+        // Return button
         Button btn = new Button("Return");
 
         EventHandler<MouseEvent> eventHandler = (MouseEvent e) -> {
@@ -120,8 +129,9 @@ public class GraphicalUserInterface extends Application {
         };
         btn.setOnMouseClicked(eventHandler);
 
-        Text txt1 = new Text("Player: " + game.getPlayer().getName());
-        Text txt2 = new Text("Turn: " + game.getTurn());
+        // Top labels 
+        Label txt1 = new Label("Player: " + game.getPlayer().getName());
+        Label txt2 = new Label("Turn: " + game.getTurn());
 
         bp.setLeft(txt1);
         bp.setCenter(btn);
@@ -130,24 +140,26 @@ public class GraphicalUserInterface extends Application {
         this.playerTxt = txt1;
         this.turnTxt = txt2;
 
+        // Mine grid
         HBox hb = new HBox();
         hb.setAlignment(Pos.CENTER);
 
         GridPane gp = new GridPane();
         createSquares(gp);
-
         hb.getChildren().add(gp);
 
-        vb.getChildren().add(bp);
-        vb.getChildren().add(hb);
+        // Set parent children
+        parent.getChildren().add(bp);
+        parent.getChildren().add(hb);
 
-        Scene scene = new Scene(vb, 800, 800);
+        // Scene
+        Scene scene = new Scene(parent, 800, 800);
         return scene;
     }
 
     /**
-     * Method to create a GridPane filled with Buttons. Creates Buttons using
-     * method createButton(int x, int y);
+     * Method to create a GridPane filled with Buttons. calls method
+     * createButton(int x, int y);
      *
      * @param gp - GridPane to store generated buttons
      */

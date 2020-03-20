@@ -1,7 +1,6 @@
 package main;
 
 import java.util.Random;
-import java.util.Timer;
 
 /**
  * Class for creating a new game of minesweeper represented by a 2D-array.
@@ -18,7 +17,6 @@ public class Game {
     private static int turn;
     private static boolean gameOver;
     private static boolean gameWon;
-    private int seconds;
 
     /**
      * Creates a default game of minesweeper with WIDTH wide square grid. Width
@@ -92,12 +90,17 @@ public class Game {
     /**
      * Returns the current turn of the game.
      *
-     * @return int - turn number
+     * @return int turn - turn number
      */
     public int getTurn() {
         return this.turn;
     }
 
+    /**
+     * Return the number of mines.
+     *
+     * @return int mines - number of mines
+     */
     public int getMines() {
         return this.mines;
     }
@@ -119,16 +122,16 @@ public class Game {
     /**
      * Returns true if game is over else returns false.
      *
-     * @return boolean - return Game parameter gameOver
+     * @return boolean - return gameOver
      */
     public boolean getGameover() {
         return this.gameOver;
     }
 
     /**
-     * Returns true if the game is won, else returns false
+     * Returns true if the game is won, else returns false.
      *
-     * @return boolean - game won value
+     * @return boolean - gameWon value
      */
     public boolean getGameWon() {
         return this.gameWon;

@@ -6,7 +6,7 @@ package test;
  * and open the template in the editor.
  */
 
-import gui.GraphicalUserInterface;
+import gui.Gui;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,10 +19,10 @@ import static org.junit.Assert.*;
  *
  * @author Ville Manninen
  */
-public class GraphicalUserInterfaceTest {
+public class GuiTest {
 
     @Test
     public void testCompile() {
-        GraphicalUserInterface gui = new GraphicalUserInterface();
+        Gui gui = new Gui();
     }
 }
