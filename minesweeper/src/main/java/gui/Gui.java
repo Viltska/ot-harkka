@@ -68,14 +68,18 @@ public class Gui extends Application {
 
         // Name label and text field
         Label txt = new Label("Name:");
-        TextField txtField = new TextField();
+        TextField textField = new TextField();
+        if (playerTxt != null) {
+            String currentName = game.getPlayer().getName();
+            textField.setText(currentName);
+        }
 
         // New game button
         Button button = new Button("New Game");
 
         EventHandler<MouseEvent> eventHandler = (MouseEvent e) -> {
             System.out.println(e);
-            String player = txtField.getText();
+            String player = textField.getText();
             game.newGame();
             game.setPlayer(player);
             stage.setScene(getGameScene());
@@ -91,7 +95,7 @@ public class Gui extends Application {
         hb.setPadding(new Insets(40));
 
         hb.getChildren().add(txt);
-        hb.getChildren().add(txtField);
+        hb.getChildren().add(textField);
 
         vb.getChildren().add(hb);
 
@@ -219,7 +223,6 @@ public class Gui extends Application {
             pressedButton.setStyle("-fx-background-color: #ff0000; ");
             pressedButton.setText("X");
             this.turnTxt.setText("Turn : GAME OVER");
-            
 
         } else {
             pressedButton.setText("");

@@ -10,12 +10,16 @@ public class Player {
     private static String name;
 
     /**
-     * Creates a new Player with a name.
+     * Creates a new Player with a name. only uses first 20 letters of the name.
      *
      * @param name - name of the player
      */
     public Player(String name) {
-        this.name = name;
+        if (!name.isEmpty() && name.length() > 20) {
+            this.name = name.substring(0, 20);
+        } else {
+            this.name = name;
+        }
     }
 
     /**

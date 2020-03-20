@@ -198,13 +198,14 @@ public class Game {
     }
 
     /**
-     * Creates a player.
+     * Creates a player with a name, only uses first 20 characters of the name.
      *
      * @param name - name of the player
      */
     public void setPlayer(String name) {
-        Player player = new Player(name);
-        this.player = player;
+        Player newPlayer = new Player(name);
+        this.player = newPlayer;
+
     }
 
     /**

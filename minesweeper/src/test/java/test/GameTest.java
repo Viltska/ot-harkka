@@ -20,14 +20,12 @@ public class GameTest {
     public GameTest() {
     }
 
-    /**
-     * Test that code can be compiled
-     */
     @Test
     public void testCreatingClass() {
         Game game = new Game();
         Game game1 = new Game(10);
-
+        game.newGame();
+        game1.newGame();
     }
 
     @Test
@@ -152,6 +150,34 @@ public class GameTest {
         assertEquals(2, game.checkNeighbours(0, 1));
         assertEquals(2, game.checkNeighbours(0, 2));
         assertEquals(3, game.checkNeighbours(2, 2));
+    }
+
+    /**
+     * Creates 100 games with 200 mines. Checks if number of neighbouring mines
+     * are always between 0 and 8.
+     */
+    @Test
+    public void testCheckNeighboursIterative() {
+        int mines = 200;
+        boolean inParameters = true;
+        for (int i = 0; i < 100; i++) {
+            Game game = new Game(mines);
+            game.newGame();
+
+            for (int j = 0; j < game.getLength(); j++) {
+                for (int l = 0; l < game.getLength(); l++) {
+                    int neigh = game.checkNeighbours(j, l);
+                    if (neigh > 8) {
+                        inParameters = false;
+                    }
+                    if (neigh < 0) {
+                        inParameters = false;
+                    }
+
+                }
+            }
+        }
+        assertEquals(true, inParameters);
     }
 
     @Test
