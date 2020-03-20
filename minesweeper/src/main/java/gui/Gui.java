@@ -31,7 +31,7 @@ import main.Game;
 public class Gui extends Application {
 
     private static Stage stage;
-    private static int WIDTH;
+    private static int length;
     private static Game game = new Game();
     private static Label playerTxt;
     private static Label turnTxt;
@@ -40,14 +40,14 @@ public class Gui extends Application {
     /**
      * Executes the graphical user interface.
      *
-     * @param Primarystage - Stage window
+     * @param primaryStage - Stage window
      */
     @Override
-    public void start(Stage Primarystage) {
+    public void start(Stage primaryStage) {
         Scene startingScene = getStartScene();
-        this.stage = Primarystage;
-        this.WIDTH = game.getWIDTH();
-        this.buttons = new Button[WIDTH][WIDTH];
+        this.stage = primaryStage;
+        this.length = game.getLength();
+        this.buttons = new Button[length][length];
 
         stage.setTitle("Minesweeper game 1.0");
         stage.setScene(startingScene);
@@ -164,8 +164,8 @@ public class Gui extends Application {
      * @param gp - GridPane to store generated buttons
      */
     private void createSquares(GridPane gp) {
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < WIDTH; j++) {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
                 Button newButton = createButton(i, j);
                 gp.add(newButton, i, j);
             }
@@ -187,17 +187,19 @@ public class Gui extends Application {
 
         EventHandler<MouseEvent> eventHandler = (MouseEvent e) -> {
             System.out.println("Button :" + e.getButton());
+            // Left click
             if (e.getButton() == MouseButton.PRIMARY) {
                 System.out.println(e);
                 leftClickButton(x, y, newButton);
             }
+            // Right click
             if (e.getButton() == MouseButton.SECONDARY) {
                 System.out.println(e);
                 rightClickButton(x, y, newButton);
             }
         };
         newButton.setOnMouseClicked(eventHandler);
-        //Stores the Buttons coordinates
+        // Add button to array
         buttons[x][y] = newButton;
 
         return newButton;
@@ -217,11 +219,7 @@ public class Gui extends Application {
             pressedButton.setStyle("-fx-background-color: #ff0000; ");
             pressedButton.setText("X");
             this.turnTxt.setText("Turn : GAME OVER");
-            //  call method that disables all buttons
-            if (!game.getGameover()) {
-                // method call
-                // set gameover true
-            }
+            
 
         } else {
             pressedButton.setText("");
@@ -230,10 +228,8 @@ public class Gui extends Application {
             }
             this.turnTxt.setText("Turn: " + game.getTurn());
             pressedButton.setDisable(true);
-
         }
         pressedButton.setDisable(true);
-
     }
 
     /**

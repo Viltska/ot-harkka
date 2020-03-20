@@ -43,11 +43,11 @@ public class GameTest {
     public void testCheckInsideGrid() {
         Game game = new Game();
         assertEquals(true, game.checkInsideGrid(0, 0));
-        assertEquals(true, game.checkInsideGrid(game.getWIDTH() - 1, game.getWIDTH() - 1));
+        assertEquals(true, game.checkInsideGrid(game.getLength() - 1, game.getLength() - 1));
         assertEquals(false, game.checkInsideGrid(-1, 0));
         assertEquals(false, game.checkInsideGrid(0, -1));
-        assertEquals(false, game.checkInsideGrid(0, game.getWIDTH()));
-        assertEquals(false, game.checkInsideGrid(game.getWIDTH(), 0));
+        assertEquals(false, game.checkInsideGrid(0, game.getLength()));
+        assertEquals(false, game.checkInsideGrid(game.getLength(), 0));
 
     }
 
@@ -59,8 +59,8 @@ public class GameTest {
         boolean mineFound = false;
 
         game.newGame();
-        for (int i = 0; i < game.getWIDTH(); i++) {
-            for (int j = 0; j < game.getWIDTH(); j++) {
+        for (int i = 0; i < game.getLength(); i++) {
+            for (int j = 0; j < game.getLength(); j++) {
                 if (game.checkForMine(i, j)) {
                     mineFound = true;
                 }
@@ -77,8 +77,8 @@ public class GameTest {
         game.newGame();
 
         int mines = 0;
-        for (int i = 0; i < game.getWIDTH(); i++) {
-            for (int j = 0; j < game.getWIDTH(); j++) {
+        for (int i = 0; i < game.getLength(); i++) {
+            for (int j = 0; j < game.getLength(); j++) {
                 if (game.checkForMine(i, j)) {
                     mines++;
                 }
@@ -88,8 +88,8 @@ public class GameTest {
         game.newGame();
 
         int mines2 = 0;
-        for (int i = 0; i < game2.getWIDTH(); i++) {
-            for (int j = 0; j < game2.getWIDTH(); j++) {
+        for (int i = 0; i < game2.getLength(); i++) {
+            for (int j = 0; j < game2.getLength(); j++) {
                 if (game.checkForMine(i, j)) {
                     mines2++;
                 }

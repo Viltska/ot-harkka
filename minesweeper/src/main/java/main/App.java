@@ -4,7 +4,7 @@ import gui.Gui;
 import javafx.application.Application;
 
 /**
- * Holds main class
+ * Class to create and launching minesweeper Application.
  *
  * @version 1.0
  * @author Ville Manninen

@@ -12,7 +12,7 @@ public class Game {
 
     private static int[][] grid;
     private static Player player;
-    private static int WIDTH = 20;
+    private static int length = 20;
     private static int mines;
     private static int turn;
     private static boolean gameOver;
@@ -23,7 +23,7 @@ public class Game {
      * is equal to 10. holding 30 mines starting at turn 1.
      */
     public Game() {
-        this.grid = new int[this.WIDTH][this.WIDTH];
+        this.grid = new int[this.length][this.length];
         this.mines = 30;
         this.gameOver = false;
         this.gameWon = true;
@@ -36,7 +36,7 @@ public class Game {
      * @param mines - number of mines inside the gird
      */
     public Game(int mines) {
-        this.grid = new int[WIDTH][WIDTH];
+        this.grid = new int[length][length];
         this.mines = mines;
         this.gameOver = false;
         this.turn = 1;
@@ -48,16 +48,16 @@ public class Game {
      *
      */
     public void newGame() {
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < WIDTH; j++) {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
                 grid[i][j] = 0;
             }
         }
         int minesLeft = this.mines;
         Random random = new Random();
         while (minesLeft > 0) {
-            int iRandom = random.nextInt(WIDTH);
-            int jRandom = random.nextInt(WIDTH);
+            int iRandom = random.nextInt(length);
+            int jRandom = random.nextInt(length);
             if (grid[iRandom][jRandom] == 0) {
                 grid[iRandom][jRandom] = 1;
                 minesLeft--;
@@ -66,7 +66,7 @@ public class Game {
     }
 
     /**
-     * Method for manually placing a mine on the grid
+     * Method for manually placing a mine on the grid.
      *
      * @param x - width coordinate of the mine
      * @param y - height coordinate of the mine
@@ -185,20 +185,20 @@ public class Game {
      * @return boolean - true if x and y values are inside the grid
      */
     public boolean checkInsideGrid(int x, int y) {
-        return x >= 0 && x < WIDTH && y >= 0 && y < WIDTH;
+        return x >= 0 && x < length && y >= 0 && y < length;
     }
 
     /**
-     * Method to get WIDTH of the game.
+     * Method to get length of the game.
      *
-     * @return WIDTH - game width
+     * @return length - game width
      */
-    public int getWIDTH() {
-        return WIDTH;
+    public int getLength() {
+        return length;
     }
 
     /**
-     * Creates a player
+     * Creates a player.
      *
      * @param name - name of the player
      */
@@ -227,8 +227,8 @@ public class Game {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < WIDTH; j++) {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
                 sb.append(grid[i][j]);
                 sb.append(" ");
             }
