@@ -1,5 +1,6 @@
 package main;
 
+import gui.ErrorScreen;
 import gui.Gui;
 import javafx.application.Application;
 
@@ -18,8 +19,10 @@ public class App {
      * @since 1.0
      * @param args - Arguments not expected
      */
-    public static void main(String args[]) {
-        Application.launch(Gui.class, args);
-
+    public static void main(String args[]) throws Exception {
+        try {
+            Application.launch(Gui.class);
+        } catch (Exception e) {
+        }
     }
 }

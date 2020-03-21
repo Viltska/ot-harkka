@@ -43,9 +43,10 @@ public class Gui extends Application {
      * Executes the graphical user interface.
      *
      * @param primaryStage - Stage window
+     * @throws java.lang.Exception -
      */
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
         Scene startingScene = getStartScene();
         this.stage = primaryStage;
         this.length = game.getLength();
@@ -54,10 +55,11 @@ public class Gui extends Application {
         stage.setTitle("Minesweeper game 1.0");
         stage.setScene(startingScene);
         stage.show();
+
     }
 
     /**
-     * Method to generate and return a starting scene.
+     * Method to generate a starting scene.
      *
      * @return Scene - starting scene
      */
@@ -108,7 +110,7 @@ public class Gui extends Application {
     }
 
     /**
-     * Method to generate and return a game scene.
+     * Method to generate a game scene,
      *
      * @return Scene - the game scene.
      */
@@ -164,8 +166,7 @@ public class Gui extends Application {
     }
 
     /**
-     * Method to create a GridPane filled with Buttons. calls method
-     * createButton(int x, int y);
+     * Method to generate a length x length GridPane filled with buttons.
      *
      * @param gp - GridPane to store generated buttons
      */
@@ -180,7 +181,7 @@ public class Gui extends Application {
     }
 
     /**
-     * Method for creating a new Button.
+     * Method for creating a new Button used inside the grid.
      *
      * @param x - x coordinate of the created Button
      * @param y - y coordinate of the created Button
@@ -213,13 +214,71 @@ public class Gui extends Application {
     }
 
     /**
+     * Method to handle left click.
+     *
+     * @param x - x coordinate of the pressedButton
+     * @param y - y coordinate of the pressedButton
+     * @param pressedButton - Button that is pressed
+     */
+    private void leftClickButton(int x, int y, Button pressedButton) {
+        if (game.getGameover() == false) {
+            game.nextTurn();
+
+            if (game.isMine(x, y)) {
+                // Color red
+                pressedButton.setStyle("-fx-background-color: #ff0000; ");
+                pressedButton.setText("X");
+                this.turnTxt.setText("GAME OVER!");
+
+                if (game.getGameover() == false) {
+                    game.setGameOver(true);
+                    revealMines();
+                }
+
+            } else {
+                pressedButton.setText(" ");
+                handleEmptySquare(x, y);
+                this.turnTxt.setText("Turn: " + game.getTurn());
+            }
+
+            pressedButton.setDisable(true);
+        }
+    }
+
+    /**
+     * Method to handle right click.
+     *
+     * @param x - x coordinate of the pressedButton
+     * @param y - y coordinate of the pressedButton
+     * @param pressedButton - Button that is pressed
+     */
+    private void rightClickButton(int x, int y, Button pressedButton) {
+        if (game.getGameover() == false) {
+            if (pressedButton.getText().equals("!")) {
+                int neighbours = game.checkNeighbours(x, y);
+                // Checks if buttons number of neighbours has been revealed 
+                if (revealed[x][y] && neighbours > 0) {
+                    pressedButton.setText("" + neighbours);
+
+                } else {
+                    pressedButton.setText("");
+                }
+
+            } else {
+                pressedButton.setText("!");
+            }
+
+        }
+    }
+
+    /**
      * Method to reveal all mines.
      *
      */
     private void revealMines() {
         for (int i = 0; i < game.getLength(); i++) {
             for (int j = 0; j < game.getLength(); j++) {
-                if (game.checkForMine(i, j)) {
+                if (game.isMine(i, j)) {
                     Button current = buttons[i][j];
                     current.setStyle("-fx-background-color: #ff0000; ");
                     current.setText("X");
@@ -263,13 +322,18 @@ public class Gui extends Application {
 
         for (int i = x - 1; i < x + 2; i++) {
             for (int j = y - 2; j < y + 2; j++) {
-                if (game.checkInsideGrid(i, j)) {
+                if (game.insideGrid(i, j)) {
+                    // If not visited
                     if (!visited[i][j]) {
-                        if (game.checkNeighbours(i, j) == 0 && !game.checkForMine(i, j)) {
+
+                        // If no neighbours and not holding a mine
+                        if (game.checkNeighbours(i, j) == 0 && !game.isMine(i, j)) {
                             stack.add(buttons[i][j]);
                             gatherSquaresRecursive(i, j, stack, visited);
                         } else {
+                            // If button is not disabled and not marked as a mine by user
                             if (!buttons[i][j].isDisable() && !buttons[i][j].getText().equals("!")) {
+                                // Edit button text to show number of neighbouring mines
                                 if (game.checkNeighbours(i, j) > 0) {
                                     buttons[i][j].setText("" + game.checkNeighbours(i, j));
                                     revealed[i][j] = true;
@@ -282,62 +346,4 @@ public class Gui extends Application {
         }
     }
 
-    /**
-     * Method to handle left click.
-     *
-     * @param x - x coordinate of the pressedButton
-     * @param y - y coordinate of the pressedButton
-     * @param pressedButton - Button that is pressed
-     */
-    private void leftClickButton(int x, int y, Button pressedButton) {
-        if (game.getGameover() == false) {
-            game.nextTurn();
-
-            if (game.checkForMine(x, y)) {
-                //Change button color to red
-                pressedButton.setStyle("-fx-background-color: #ff0000; ");
-                pressedButton.setText("X");
-                this.turnTxt.setText("GAME OVER!");
-
-                if (game.getGameover() == false) {
-                    game.setGameOver(true);
-                    revealMines();
-                }
-
-            } else {
-                pressedButton.setText(" ");
-                handleEmptySquare(x, y);
-                this.turnTxt.setText("Turn: " + game.getTurn());
-            }
-
-            pressedButton.setDisable(true);
-        }
-    }
-
-    /**
-     * Method to handle right click.
-     *
-     * @param x - x coordinate of the pressedButton
-     * @param y - y coordinate of the pressedButton
-     * @param pressedButton - Button that is pressed
-     */
-    private void rightClickButton(int x, int y, Button pressedButton) {
-        if (game.getGameover() == false) {
-            if (pressedButton.getText().equals("!")) {
-                if (revealed[x][y] == true) {
-                    int neighbours = game.checkNeighbours(x, y);
-                    if (neighbours > 0) {
-                        pressedButton.setText("" + neighbours);
-                    } else {
-                        pressedButton.setText("");
-                    }
-                } else {
-                    pressedButton.setText("");
-                }
-
-            } else {
-                pressedButton.setText("!");
-            }
-        }
-    }
 }

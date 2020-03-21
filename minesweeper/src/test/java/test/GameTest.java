@@ -38,28 +38,28 @@ public class GameTest {
     }
 
     @Test
-    public void testCheckInsideGrid() {
+    public void testInsideGrid() {
         Game game = new Game();
-        assertEquals(true, game.checkInsideGrid(0, 0));
-        assertEquals(true, game.checkInsideGrid(game.getLength() - 1, game.getLength() - 1));
-        assertEquals(false, game.checkInsideGrid(-1, 0));
-        assertEquals(false, game.checkInsideGrid(0, -1));
-        assertEquals(false, game.checkInsideGrid(0, game.getLength()));
-        assertEquals(false, game.checkInsideGrid(game.getLength(), 0));
+        assertEquals(true, game.insideGrid(0, 0));
+        assertEquals(true, game.insideGrid(game.getLength() - 1, game.getLength() - 1));
+        assertEquals(false, game.insideGrid(-1, 0));
+        assertEquals(false, game.insideGrid(0, -1));
+        assertEquals(false, game.insideGrid(0, game.getLength()));
+        assertEquals(false, game.insideGrid(game.getLength(), 0));
 
     }
 
     @Test
-    public void testMineCheck() {
+    public void testIsMine() {
         Game game = new Game();
-        boolean noMine = game.checkForMine(0, 0);
+        boolean noMine = game.isMine(0, 0);
 
         boolean mineFound = false;
 
         game.newGame();
         for (int i = 0; i < game.getLength(); i++) {
             for (int j = 0; j < game.getLength(); j++) {
-                if (game.checkForMine(i, j)) {
+                if (game.isMine(i, j)) {
                     mineFound = true;
                 }
 
@@ -77,7 +77,7 @@ public class GameTest {
         int mines = 0;
         for (int i = 0; i < game.getLength(); i++) {
             for (int j = 0; j < game.getLength(); j++) {
-                if (game.checkForMine(i, j)) {
+                if (game.isMine(i, j)) {
                     mines++;
                 }
             }
@@ -88,7 +88,7 @@ public class GameTest {
         int mines2 = 0;
         for (int i = 0; i < game2.getLength(); i++) {
             for (int j = 0; j < game2.getLength(); j++) {
-                if (game.checkForMine(i, j)) {
+                if (game.isMine(i, j)) {
                     mines2++;
                 }
             }
@@ -128,9 +128,9 @@ public class GameTest {
     @Test
     public void testSetMine() {
         Game game = new Game();
-        assertEquals(false, game.checkForMine(0, 0));
+        assertEquals(false, game.isMine(0, 0));
         game.setMine(0, 0);
-        assertEquals(true, game.checkForMine(0, 0));
+        assertEquals(true, game.isMine(0, 0));
         assertEquals(31, game.getMines());
         game.setMine(0, 0);
         assertEquals(31, game.getMines());

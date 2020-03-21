@@ -15,6 +15,7 @@ public class Game {
     private static int length = 20;
     private static int mines;
     private static int turn;
+    private static int squaresOpened;
     private static boolean gameOver;
     private static boolean gameWon;
 
@@ -24,10 +25,11 @@ public class Game {
      */
     public Game() {
         this.grid = new int[this.length][this.length];
-        this.mines = 50;
+        this.mines = 30;
         this.gameOver = false;
         this.gameWon = true;
         this.turn = 1;
+        this.squaresOpened = 0;
     }
 
     /**
@@ -69,13 +71,14 @@ public class Game {
     }
 
     /**
-     * Method for manually placing a mine on the grid.
+     * Method for manually placing a mine on the grid. (Used mainly for
+     * testing).
      *
      * @param x - width coordinate of the mine
      * @param y - height coordinate of the mine
      */
     public void setMine(int x, int y) {
-        if (!checkForMine(x, y)) {
+        if (!isMine(x, y)) {
             grid[x][y] = 1;
             mines++;
         }
@@ -127,7 +130,7 @@ public class Game {
     /**
      * Returns true if game is over else returns false.
      *
-     * @return boolean - return gameOver
+     * @return Boolean - return gameOver
      */
     public boolean getGameover() {
         return this.gameOver;
@@ -136,7 +139,7 @@ public class Game {
     /**
      * Returns true if the game is won, else returns false.
      *
-     * @return boolean - gameWon value
+     * @return Boolean - gameWon value
      */
     public boolean getGameWon() {
         return this.gameWon;
@@ -149,7 +152,7 @@ public class Game {
      * @param y - width coordinate
      * @return boolean - true if square if a mine else false
      */
-    public boolean checkForMine(int x, int y) {
+    public boolean isMine(int x, int y) {
         return grid[x][y] == 1;
     }
 
@@ -164,7 +167,7 @@ public class Game {
         int minesFound;
 
         // Checks if middle coordinate holds a mine
-        if (checkForMine(x, y)) {
+        if (isMine(x, y)) {
             minesFound = -1;
         } else {
             minesFound = 0;
@@ -172,8 +175,8 @@ public class Game {
 
         for (int i = x - 1; i <= x + 1; i++) {
             for (int j = y - 1; j <= y + 1; j++) {
-                if (checkInsideGrid(i, j)) {
-                    if (checkForMine(i, j)) {
+                if (insideGrid(i, j)) {
+                    if (isMine(i, j)) {
                         minesFound++;
                     }
                 }
@@ -187,9 +190,9 @@ public class Game {
      *
      * @param x - height coordinate
      * @param y - width coordinate
-     * @return boolean - true if x and y values are inside the grid
+     * @return Boolean - true if x and y values are inside the grid
      */
-    public boolean checkInsideGrid(int x, int y) {
+    public boolean insideGrid(int x, int y) {
         return x >= 0 && x < length && y >= 0 && y < length;
     }
 

@@ -1,7 +1,5 @@
 package test;
 
-import javafx.application.Platform;
-import jdk.javadoc.internal.tool.Main;
 import main.App;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,8 +15,8 @@ import static org.junit.Assert.*;
 public class AppTest {
 
     @Test
-    public void testMain() {
+    public void testMain() throws Exception {
         App app = new App();
-        
+
     }
 }
