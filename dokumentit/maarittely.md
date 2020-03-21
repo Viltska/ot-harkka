@@ -20,9 +20,13 @@ Yksinkertainen käyttöliittymän kautta toimiva miinaharava peli joka pitää m
 
 ## Jatkokehitysideoita
 
-* Pelin grafiikkaa voidaan hioa korvaamalla ASCII-merkkejä kuvilla, esimerkiksi miina- ja varoitusmerkit.
+* Ohjelma käyttää ASCII-merkkejä, nämä voitaisiin korvata kuvilla.
 
 * Ohjelman automaattinen skaalaaminen näytön natiiviresoluution perustella.
+
+* Graafisen käyttöliittymän jakaminen pienempiin luokkiin.
+
+* Square luokka korvaamaan JavaFX nappia joka sisältäisi koordinaattit ja naapureiden määrän.
 
 
 
