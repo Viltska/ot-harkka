@@ -112,7 +112,7 @@ public class GameTest {
     public void testGameOver() {
         Game game = new Game();
         assertEquals(false, game.getGameover());
-        game.setGameOver();
+        game.setGameOver(true);
         assertEquals(true, game.getGameover());
 
     }

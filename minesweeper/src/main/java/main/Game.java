@@ -24,7 +24,7 @@ public class Game {
      */
     public Game() {
         this.grid = new int[this.length][this.length];
-        this.mines = 30;
+        this.mines = 50;
         this.gameOver = false;
         this.gameWon = true;
         this.turn = 1;
@@ -48,6 +48,9 @@ public class Game {
      *
      */
     public void newGame() {
+        turn = 1;
+        gameOver = false;
+        gameWon = false;
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
                 grid[i][j] = 0;
@@ -106,10 +109,12 @@ public class Game {
     }
 
     /**
-     * Sets game over to true.
+     * Sets gameOver value.
+     *
+     * @param bool - true or false
      */
-    public void setGameOver() {
-        this.gameOver = true;
+    public void setGameOver(boolean bool) {
+        this.gameOver = bool;
     }
 
     /**
