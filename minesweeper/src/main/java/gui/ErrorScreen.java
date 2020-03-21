@@ -7,14 +7,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- * Class for error screen if main Application fails to launch
+ * Class for error screen if main Application fails to launch.
  *
  * @author Ville Manninen
  */
 public class ErrorScreen extends Application {
 
     /**
-     * Starts the error window
+     * Starts the error window.
      *
      * @param stage - primaryStage
      * @throws Exception - Error message

@@ -13,9 +13,10 @@ import javafx.application.Application;
 public class App {
 
     /**
-     * Main class launches JavaFX Application class GUI.java. does not expect
-     * any arguments.
+     * Main class launches JavaFX Application class GUI.java.does not expect any
+     * arguments.
      *
+     * @throws java.lang.Exception - Exception in method Application.launch()
      * @since 1.0
      * @param args - Arguments not expected
      */

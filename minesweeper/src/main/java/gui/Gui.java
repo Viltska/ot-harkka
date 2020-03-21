@@ -322,28 +322,25 @@ public class Gui extends Application {
 
         for (int i = x - 1; i < x + 2; i++) {
             for (int j = y - 2; j < y + 2; j++) {
-                if (game.insideGrid(i, j)) {
-                    // If not visited
-                    if (!visited[i][j]) {
-
-                        // If no neighbours and not holding a mine
-                        if (game.checkNeighbours(i, j) == 0 && !game.isMine(i, j)) {
-                            stack.add(buttons[i][j]);
-                            gatherSquaresRecursive(i, j, stack, visited);
-                        } else {
-                            // If button is not disabled and not marked as a mine by user
-                            if (!buttons[i][j].isDisable() && !buttons[i][j].getText().equals("!")) {
-                                // Edit button text to show number of neighbouring mines
-                                if (game.checkNeighbours(i, j) > 0) {
-                                    buttons[i][j].setText("" + game.checkNeighbours(i, j));
-                                    revealed[i][j] = true;
-                                }
+                // If inside grid and not visited
+                if (game.insideGrid(i, j) && !visited[i][j]) {
+                    // If no neighbours and not holding a mine
+                    if (game.checkNeighbours(i, j) == 0 && !game.isMine(i, j)) {
+                        stack.add(buttons[i][j]);
+                        gatherSquaresRecursive(i, j, stack, visited);
+                    } else {
+                        // If button is not disabled and not marked as a mine by user
+                        if (!buttons[i][j].isDisable() && !buttons[i][j].getText().equals("!")) {
+                            // Edit button text to show number of neighbouring mines
+                            if (game.checkNeighbours(i, j) > 0) {
+                                buttons[i][j].setText("" + game.checkNeighbours(i, j));
+                                revealed[i][j] = true;
                             }
                         }
                     }
+
                 }
             }
         }
     }
-
 }
