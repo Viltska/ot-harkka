@@ -4,6 +4,14 @@
 [Työajankirjanpito](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/tyoaika.md)
 
 ## Harjoitustyö
+
+[Määrittelydokumentti](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/maarittely.md)
+
+[Minesweeper](https://github.com/Viltska/ot-minesweeper/tree/master/minesweeper)
+
+### Suorittaminen ja testaaminen
+Kun ollaan ohjelman hakemistossa jossa sijaitsee POM.xml tiedosto voidaan ohjelmaa suorittaa ja testata komentoriviltä.
+
 Ohjelman suorittaminen komentoriviltä:
 
 <code> mvn compile exec:java -Dexec.mainClass=main.App </code>
@@ -12,9 +20,13 @@ Ohjelman testaaminen komentoriviltä:
 
 <code> mvn test </code>
 
-[Määrittelydokumentti](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/maarittely.md)
+Jacoco testiraportti: 
 
-[App](https://github.com/Viltska/ot-minesweeper/tree/master/minesweeper)
+<code> mvn jacoco:report </code>
+
+Checkstyle raportti:
+
+<code> mvn checkstyle:checkstyle: </code>
 
 ## Tehtavat
 
