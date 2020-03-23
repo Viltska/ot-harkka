@@ -6,11 +6,11 @@
 ## Harjoitustyö
 Ohjelman suorittaminen komentoriviltä:
 
-mvn compile exec:java -Dexec.mainClass=main.App
+<code> mvn compile exec:java -Dexec.mainClass=main.App <code/>
 
 Ohjelman testaaminen komentoriviltä:
 
-mvn test
+<code> mvn test <code/>
 
 [Määrittelydokumentti](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/maarittely.md)
 
