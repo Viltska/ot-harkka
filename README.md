@@ -4,6 +4,14 @@
 [Työajankirjanpito](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/tyoaika.md)
 
 ## Harjoitustyö
+Ohjelman suorittaminen komentoriviltä:
+
+mvn compile exec:java -Dexec.mainClass=main.App
+
+Ohjelman testaaminen komentoriviltä:
+
+mvn test
+
 [Määrittelydokumentti](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/maarittely.md)
 
 [App](https://github.com/Viltska/ot-minesweeper/tree/master/minesweeper)
