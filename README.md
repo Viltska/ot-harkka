@@ -1,4 +1,4 @@
-# Ohjelmistotekniikka
+# Ohjelmistotekniikka Kevät 2020 - Minesweeper
 **Ville Manninen**
 
 [Työajankirjanpito](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/tyoaika.md)
