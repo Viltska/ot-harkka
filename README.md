@@ -20,6 +20,7 @@ Ohjelman hakemistossa jossa sijaitsee POM.xml  voidaan ohjelmaa suorittaa ja tes
 <code> mvn jacoco:report </code>
 - Checkstyle raportti:
 <code> mvn checkstyle:checkstyle: </code>
+- Raportit ilmestyvät kansioon /target, ne voidaan poistaa komennolla <code> mvn clean </code>
 
 ## Tehtavat
 
