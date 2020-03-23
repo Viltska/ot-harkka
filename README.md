@@ -10,9 +10,9 @@
 [Minesweeper](https://github.com/Viltska/ot-minesweeper/tree/master/minesweeper)
 
 ### Suorittaminen ja testaaminen
-Kun ollaan ohjelman hakemistossa jossa sijaitsee POM.xml tiedosto voidaan ohjelmaa suorittaa ja testata komentoriviltä.
+Ohjelman hakemistossa jossa sijaitsee POM.xml  voidaan ohjelmaa suorittaa ja testata komentoriviltä.
 
-Ohjelman suorittaminen komentoriviltä:
+Ohjelman suorittaminen tapahtuu komennolla:
 
 <code> mvn compile exec:java -Dexec.mainClass=main.App </code>
 
