@@ -34,3 +34,7 @@ Ohjelman hakemistossa jossa sijaitsee POM.xml  voidaan ohjelmaa suorittaa ja tes
 [Maksukortti](https://github.com/Viltska/ot-harkka/tree/master/laskarit/viikko2/Maksukortti)
 
 [Testit](https://github.com/Viltska/ot-harkka/tree/master/laskarit/viikko2/Maksukortti/src/test/java)
+
+[Unicafe testikansio](https://github.com/Viltska/ot-minesweeper/tree/master/laskarit/viikko2/Unicafe/src/test/java/com/mycompany/unicafe)
+
+[Unicafe testikattavuus](https://github.com/Viltska/ot-minesweeper/blob/master/laskarit/viikko2/kassapaate.png)
