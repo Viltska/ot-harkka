@@ -1,4 +1,4 @@
-package gui;
+package fi.villemanninen.gui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

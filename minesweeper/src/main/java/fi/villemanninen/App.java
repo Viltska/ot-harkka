@@ -1,7 +1,6 @@
-package main;
+package fi.villemanninen;
 
-import gui.ErrorScreen;
-import gui.Gui;
+import fi.villemanninen.gui.Gui;
 import javafx.application.Application;
 
 /**

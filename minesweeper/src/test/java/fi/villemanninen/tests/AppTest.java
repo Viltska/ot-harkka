@@ -1,6 +1,6 @@
-package test;
+package fi.villemanninen.tests;
 
-import main.App;
+import fi.villemanninen.App;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

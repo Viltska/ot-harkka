@@ -1,4 +1,4 @@
-package main;
+package fi.villemanninen.game;
 
 import java.util.Random;
 
@@ -15,7 +15,6 @@ public class Game {
     private static int length = 20;
     private static int mines;
     private static int turn;
-    private static int squaresOpened;
     private static boolean gameOver;
     private static boolean gameWon;
 
@@ -29,7 +28,7 @@ public class Game {
         this.gameOver = false;
         this.gameWon = true;
         this.turn = 1;
-        this.squaresOpened = 0;
+
     }
 
     /**

@@ -1,4 +1,4 @@
-package test;
+package fi.villemanninen.tests;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,7 +6,7 @@ package test;
  * and open the template in the editor.
  */
 
-import gui.Gui;
+import fi.villemanninen.gui.Gui;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

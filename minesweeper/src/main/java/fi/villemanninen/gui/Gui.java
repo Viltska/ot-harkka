@@ -1,4 +1,4 @@
-package gui;
+package fi.villemanninen.gui;
 
 //JavaFX
 import java.util.Stack;
@@ -22,7 +22,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 // scr package imports
-import main.Game;
+import fi.villemanninen.game.Game;
 
 /**
  * Graphical user interface for creating and playing minesweeper.

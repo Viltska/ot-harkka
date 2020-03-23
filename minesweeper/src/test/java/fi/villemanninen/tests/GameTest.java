@@ -1,7 +1,7 @@
-package test;
+package fi.villemanninen.tests;
 
-import main.Game;
-import main.Player;
+import fi.villemanninen.game.Game;
+import fi.villemanninen.game.Player;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

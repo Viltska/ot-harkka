@@ -1,4 +1,4 @@
-package main;
+package fi.villemanninen.game;
 
 /**
  * Represents a player of the game.
