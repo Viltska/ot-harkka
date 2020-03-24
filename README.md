@@ -13,7 +13,7 @@
 Ohjelman hakemistossa jossa sijaitsee POM.xml  voidaan ohjelmaa suorittaa ja testata komentoriviltä.
 
 - Ohjelman suorittaminen tapahtuu komennolla:
-<code> mvn compile exec:java -Dexec.mainClass=main.App </code>
+<code> mvn compile exec:java -Dexec.mainClass=fi.villemanninen.App </code>
 - Ohjelman testaaminen komentoriviltä:
  <code> mvn test </code>
 - Jacoco testiraportti: 
