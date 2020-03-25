@@ -33,7 +33,7 @@ public class Gui extends Application {
 
     private static Stage stage;
     private static int length;
-    private static Game game = new Game();
+    private static Game game = new Game(50);
     private static Label playerTxt;
     private static Label turnTxt;
     private static Button buttons[][];
@@ -289,36 +289,28 @@ public class Gui extends Application {
     }
 
     /**
-     * Method calls recursive method gatherSquaresRecursive that collects all
-     * the connected squares to a Stack, then method will go through the stack
-     * and disable the buttons.
+     * Method to handle right click on an empty square. Calls recursive method
+     * openSquaresRecursive.
      *
      * @param x - width coordinate of the starting click
      * @param y - height coordinate of the starting click
      */
     public void handleEmptySquare(int x, int y) {
-        Stack<Button> stack = new Stack<>();
         boolean[][] visited = new boolean[length][length];
-        gatherSquaresRecursive(x, y, stack, visited);
+        openSquaresRecursive(x, y, visited);
 
-        while (!stack.isEmpty()) {
-            stack.pop().setDisable(true);
-        }
     }
 
     /**
-     * Recursive (BFS) method for gathering all the connected buttons to a
-     * Stack. Method will only collect empty squares with no neighbouring mines
-     * to the stack, otherwise it will edit Button text accordingly.
+     * Recursive method for right clicking connected squares of the starting
+     * square.
      *
-     * @param x - current width coordinate
-     * @param y - current height coordinate
-     * @param stack - Stack that holds all the buttons that are collected
-     * @param visited - 2d-array for remembering visited squares
+     * @param x - width coordinate
+     * @param y - height coordinate
+     * @param visited - Boolean 2D-array of visited squares
      */
-    public void gatherSquaresRecursive(int x, int y, Stack<Button> stack, boolean[][] visited) {
+    public void openSquaresRecursive(int x, int y, boolean[][] visited) {
         visited[x][y] = true;
-        stack.add(buttons[x][y]);
 
         for (int i = x - 1; i < x + 2; i++) {
             for (int j = y - 2; j < y + 2; j++) {
@@ -326,14 +318,15 @@ public class Gui extends Application {
                 if (game.insideGrid(i, j) && !visited[i][j]) {
                     // If no neighbours and not holding a mine
                     if (game.checkNeighbours(i, j) == 0 && !game.isMine(i, j)) {
-                        stack.add(buttons[i][j]);
-                        gatherSquaresRecursive(i, j, stack, visited);
+                        buttons[i][j].setDisable(true);
+                        openSquaresRecursive(i, j, visited);
                     } else {
                         // If button is not disabled and not marked as a mine by user
                         if (!buttons[i][j].isDisable() && !buttons[i][j].getText().equals("!")) {
                             // Edit button text to show number of neighbouring mines
-                            if (game.checkNeighbours(i, j) > 0) {
+                            if (game.checkNeighbours(i, j) > 0 && !game.isMine(i, j)) {
                                 buttons[i][j].setText("" + game.checkNeighbours(i, j));
+                                buttons[i][j].setDisable(true);
                                 revealed[i][j] = true;
                             }
                         }
