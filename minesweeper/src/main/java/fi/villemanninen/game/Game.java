@@ -10,13 +10,14 @@ import java.util.Random;
  */
 public class Game {
 
-    private static int[][] grid;
-    private static Player player;
-    private static int length = 20;
-    private static int mines;
-    private static int turn;
-    private static boolean gameOver;
-    private static boolean gameWon;
+    private int[][] grid;
+    private Player player;
+    private int length = 20;
+    private int mines;
+    private int turn;
+    private boolean gameOver;
+    private boolean gameWon;
+    private boolean[][] flagged;
 
     /**
      * Creates a default game of minesweeper with WIDTH wide square grid. Width
@@ -24,6 +25,7 @@ public class Game {
      */
     public Game() {
         this.grid = new int[this.length][this.length];
+        this.flagged = new boolean[this.length][this.length];
         this.mines = 30;
         this.gameOver = false;
         this.gameWon = true;
@@ -80,6 +82,42 @@ public class Game {
         if (!isMine(x, y)) {
             grid[x][y] = 1;
             mines++;
+        }
+    }
+
+    /**
+     * Method for checking if the game is won.
+     *
+     */
+    public void updateGameWon() {
+        int correctFlags = 0;
+        int flags = 0;
+
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; i++) {
+                if (flagged[i][j]) {
+                    flags++;
+                    if (isMine(i, j)) {
+                        correctFlags++;
+                    }
+                }
+            }
+        }
+        if (correctFlags == mines && flags == correctFlags) {
+            gameWon = true;
+        }
+    }
+
+    /**
+     * Method for setting flagged value for a square.
+     *
+     * @param x - width coordinate
+     * @param y - height coordinate
+     * @param value - Boolean value
+     */
+    public void setFlagged(int x, int y, boolean value) {
+        if (insideGrid(x, y)) {
+            flagged[x][y] = value;
         }
     }
 

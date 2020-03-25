@@ -1,7 +1,6 @@
 package fi.villemanninen.gui;
 
 //JavaFX
-import java.util.Stack;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -37,7 +36,6 @@ public class Gui extends Application {
     private static Label playerTxt;
     private static Label turnTxt;
     private static Button buttons[][];
-    private static boolean revealed[][];
 
     /**
      * Executes the graphical user interface.
@@ -50,7 +48,6 @@ public class Gui extends Application {
         Scene startingScene = getStartScene();
         this.stage = primaryStage;
         this.length = game.getLength();
-        this.revealed = new boolean[length][length];
 
         stage.setTitle("Minesweeper game 1.0");
         stage.setScene(startingScene);
@@ -248,24 +245,18 @@ public class Gui extends Application {
     /**
      * Method to handle right click.
      *
-     * @param x - x coordinate of the pressedButton
-     * @param y - y coordinate of the pressedButton
      * @param pressedButton - Button that is pressed
      */
     private void rightClickButton(int x, int y, Button pressedButton) {
         if (game.getGameover() == false) {
             if (pressedButton.getText().equals("!")) {
-                int neighbours = game.checkNeighbours(x, y);
-                // Checks if buttons number of neighbours has been revealed 
-                if (revealed[x][y] && neighbours > 0) {
-                    pressedButton.setText("" + neighbours);
-
-                } else {
-                    pressedButton.setText("");
-                }
-
+                pressedButton.setText("");
+                game.setFlagged(x, y, false);
+                game.updateGameWon();
             } else {
                 pressedButton.setText("!");
+                game.setFlagged(x, y, true);
+                game.updateGameWon();
             }
 
         }
@@ -327,7 +318,6 @@ public class Gui extends Application {
                             if (game.checkNeighbours(i, j) > 0 && !game.isMine(i, j)) {
                                 buttons[i][j].setText("" + game.checkNeighbours(i, j));
                                 buttons[i][j].setDisable(true);
-                                revealed[i][j] = true;
                             }
                         }
                     }
