@@ -218,7 +218,7 @@ public class Gui extends Application {
      * @param pressedButton - Button that is pressed
      */
     private void leftClickButton(int x, int y, Button pressedButton) {
-        if (game.getGameover() == false) {
+        if (game.getGameover() == false && game.getGameWon() == false) {
             game.nextTurn();
 
             if (game.isMine(x, y)) {
@@ -248,7 +248,7 @@ public class Gui extends Application {
      * @param pressedButton - Button that is pressed
      */
     private void rightClickButton(int x, int y, Button pressedButton) {
-        if (game.getGameover() == false) {
+        if (game.getGameover() == false && game.getGameWon() == false) {
             if (pressedButton.getText().equals("!")) {
                 pressedButton.setText("");
                 game.setFlagged(x, y, false);

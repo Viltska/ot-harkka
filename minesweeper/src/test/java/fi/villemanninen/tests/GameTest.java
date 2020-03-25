@@ -83,12 +83,12 @@ public class GameTest {
             }
         }
         Game game2 = new Game(20);
-        game.newGame();
+        game2.newGame();
 
         int mines2 = 0;
         for (int i = 0; i < game2.getLength(); i++) {
             for (int j = 0; j < game2.getLength(); j++) {
-                if (game.isMine(i, j)) {
+                if (game2.isMine(i, j)) {
                     mines2++;
                 }
             }
