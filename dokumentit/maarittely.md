@@ -14,6 +14,8 @@ Sovelluksella on kaksi näkymää, aloitus- ja pelinäkymät.
 
 Aloitusnäkymässä käyttäjä antaa nimensä ja valitsee uuden pelin aloittamisesta, pelinäkymässä käyttäjä voi pelata peliä.
 
+Käytetyt kuvat saatu sivulta [linkki](https://www.pngguru.com/).
+
 ## Perusversion tarjoama toiminnallisuus
 
 Yksinkertainen käyttöliittymän kautta toimiva miinaharava peli joka pitää muistissa aikaisemmat pelaajan tulokset. 
