@@ -14,7 +14,7 @@ Sovelluksella on kaksi näkymää, aloitus- ja pelinäkymät.
 
 Aloitusnäkymässä käyttäjä antaa nimensä ja valitsee uuden pelin aloittamisesta, pelinäkymässä käyttäjä voi pelata peliä.
 
-Käytetyt kuvat saatu sivulta [linkki](https://www.pngguru.com/).
+Käytetyt kuvat saatu sivulta [pngguru](https://www.pngguru.com/), käytetyt kuvat eivät ole tekijänoikeuksien alaisia.
 
 ## Perusversion tarjoama toiminnallisuus
 
