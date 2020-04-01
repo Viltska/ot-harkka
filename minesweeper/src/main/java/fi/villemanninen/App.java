@@ -23,6 +23,8 @@ public class App {
         try {
             Application.launch(Gui.class);
         } catch (Exception e) {
+            System.out.println("Unfortunate error");
+            System.out.println(e);
         }
     }
 }

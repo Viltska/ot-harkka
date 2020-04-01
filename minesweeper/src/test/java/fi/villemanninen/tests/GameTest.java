@@ -104,8 +104,8 @@ public class GameTest {
         game.nextTurn();
         int turn2 = game.getTurn();
 
-        assertEquals(1, turn1);
-        assertEquals(2, turn2);
+        assertEquals(0, turn1);
+        assertEquals(1, turn2);
     }
 
     @Test

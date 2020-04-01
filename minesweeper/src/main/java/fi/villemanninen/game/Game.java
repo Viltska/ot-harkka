@@ -29,7 +29,7 @@ public class Game {
         this.mines = 30;
         this.gameOver = false;
         this.gameWon = true;
-        this.turn = 1;
+        this.turn = 0;
 
     }
 
@@ -42,7 +42,7 @@ public class Game {
         this.grid = new int[length][length];
         this.mines = mines;
         this.gameOver = false;
-        this.turn = 1;
+        this.turn = 0;
     }
 
     /**
@@ -187,7 +187,7 @@ public class Game {
      *
      * @param x - height coordinate
      * @param y - width coordinate
-     * @return boolean - true if square if a mine else false
+     * @return Boolean - true if square if a mine else false
      */
     public boolean isMine(int x, int y) {
         return grid[x][y] == 1;

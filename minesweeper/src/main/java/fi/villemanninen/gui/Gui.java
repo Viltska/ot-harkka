@@ -9,19 +9,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 // scr package imports
 import fi.villemanninen.game.Game;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * Graphical user interface for creating and playing minesweeper.
@@ -30,12 +30,14 @@ import fi.villemanninen.game.Game;
  */
 public class Gui extends Application {
 
-    private static Stage stage;
-    private static int length;
-    private static Game game = new Game(50);
-    private static Label playerTxt;
-    private static Label turnTxt;
-    private static Button buttons[][];
+    private Stage stage;
+    private int length;
+    private Game game = new Game(50);
+    private Label playerTxt;
+    private Label turnTxt;
+    private ButtonFactory buttonFactory;
+    private Image logo;
+    private Image sick;
 
     /**
      * Executes the graphical user interface.
@@ -45,14 +47,22 @@ public class Gui extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene startingScene = getStartScene();
         this.stage = primaryStage;
         this.length = game.getLength();
+        this.buttonFactory = new ButtonFactory(this, game);
 
-        stage.setTitle("Minesweeper game 1.0");
-        stage.setScene(startingScene);
+        try {
+            this.logo = new Image(new FileInputStream("src/main/resources/biohazard.png"));
+            this.sick = new Image(new FileInputStream("src/main/resources/sick.png"));
+            stage.getIcons().add(logo);
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+
+        }
+        stage.setTitle("Corona Sweeper");
+        stage.setScene(getStartScene());
         stage.show();
-
     }
 
     /**
@@ -60,40 +70,76 @@ public class Gui extends Application {
      *
      * @return Scene - starting scene
      */
-    private Scene getStartScene() {
+    public Scene getStartScene() {
+        game.newGame();
         // Parent
         VBox vb = new VBox();
         vb.setAlignment(Pos.CENTER);
-        vb.setPadding(new Insets(80));
-        vb.setSpacing(40);
+        vb.setPadding(new Insets(10));
+        vb.setSpacing(5);
+
+        //Header
+        VBox vb2 = new VBox();
+        vb2.setAlignment(Pos.CENTER);
+        vb2.setPadding(new Insets(80));
+        vb2.setSpacing(40);
+        Label header1 = new Label("Corona Sweeper!");
+
+        VBox headerVB = new VBox();
+        headerVB.setAlignment(Pos.CENTER);
+        headerVB.setSpacing(16);
+
+        Label header2 = new Label("Do your best to avoid infected people");
+
+        ImageView iView = new ImageView(sick);
+        iView.setFitHeight(40);
+        iView.setFitWidth(40);
+
+        headerVB.getChildren().add(header2);
+        headerVB.getChildren().add(iView);
+
+        header1.setStyle("-fx-font-weight: bold");
+        header2.setStyle("-fx-font-weight: bold");
+
+        header1.setScaleX(4);
+        header1.setScaleY(4);
+
+        header2.setScaleX(2);
+        header2.setScaleY(2);
+
+        ImageView iView2 = new ImageView(logo);
+        iView2.setFitHeight(180);
+        iView2.setFitWidth(180);
+
+        vb2.getChildren().add(iView2);
+        vb2.getChildren().add(header1);
+        vb2.getChildren().add(headerVB);
+
+        vb.getChildren().add(vb2);
 
         // Name label and text field
-        Label txt = new Label("Name:");
+        Label txt = new Label("Your name: ");
+        txt.setScaleX(1.5);
+        txt.setScaleY(1.5);
+        
         TextField textField = new TextField();
-        if (playerTxt != null) {
-            String currentName = game.getPlayer().getName();
-            textField.setText(currentName);
-        }
 
         // New game button
-        Button button = new Button("New Game");
+        Button button = new Button("OK");
 
         EventHandler<MouseEvent> eventHandler = (MouseEvent e) -> {
             System.out.println(e);
-            String player = textField.getText();
-            game.newGame();
-            game.setPlayer(player);
+            game.setPlayer(textField.getText());
             stage.setScene(getGameScene());
         };
         button.setOnMouseClicked(eventHandler);
-
         vb.getChildren().add(button);
 
         // HBox for name label and text field
         HBox hb = new HBox();
         hb.setAlignment(Pos.CENTER);
         hb.setSpacing(20);
-        hb.setPadding(new Insets(40));
+        hb.setPadding(new Insets(10));
 
         hb.getChildren().add(txt);
         hb.getChildren().add(textField);
@@ -101,8 +147,17 @@ public class Gui extends Application {
         vb.getChildren().add(hb);
 
         // Scene
-        Scene startingScene = new Scene(vb, 800, 800);
+        Scene startingScene = new Scene(vb, 1000, 800);
         return startingScene;
+
+    }
+
+    /**
+     * Method for setting scene back to start scene.
+     *
+     */
+    public void changeToStartScene() {
+        stage.setScene(getStartScene());
 
     }
 
@@ -111,32 +166,29 @@ public class Gui extends Application {
      *
      * @return Scene - the game scene.
      */
-    private Scene getGameScene() {
+    public Scene getGameScene() {
         // Parent 
         VBox parent = new VBox();
         parent.setAlignment(Pos.CENTER);
         parent.setPadding(new Insets(40));
-        parent.setSpacing(20);
+        parent.setSpacing(10);
 
         // Top labels pane
         BorderPane bp = new BorderPane();
         bp.setPadding(new Insets(20));
 
         // Return button
-        Button btn = new Button("Return");
-
-        EventHandler<MouseEvent> eventHandler = (MouseEvent e) -> {
-            System.out.println("Button :" + e.getButton());
-            if (e.getButton() == MouseButton.PRIMARY) {
-                System.out.println(e);
-                stage.setScene(getStartScene());
-            }
-        };
-        btn.setOnMouseClicked(eventHandler);
+        Button btn = buttonFactory.createMiddleButton();
 
         // Top labels 
         Label txt1 = new Label("Player: " + game.getPlayer().getName());
-        Label txt2 = new Label("Turn: " + game.getTurn());
+        Label txt2 = new Label("People avoided: 0");
+
+        txt1.setScaleX(1.5);
+        txt1.setScaleY(1.5);
+
+        txt2.setScaleX(1.5);
+        txt2.setScaleY(1.5);
 
         bp.setLeft(txt1);
         bp.setCenter(btn);
@@ -158,8 +210,17 @@ public class Gui extends Application {
         parent.getChildren().add(hb);
 
         // Scene
-        Scene scene = new Scene(parent, 800, 800);
+        Scene scene = new Scene(parent, 1000, 800);
         return scene;
+    }
+
+    /**
+     * Method for setting scene back to start scene.
+     *
+     */
+    public void changeToGameScene() {
+        stage.setScene(getGameScene());
+
     }
 
     /**
@@ -167,162 +228,34 @@ public class Gui extends Application {
      *
      * @param gp - GridPane to store generated buttons
      */
-    private void createSquares(GridPane gp) {
-        this.buttons = new Button[length][length];
+    public void createSquares(GridPane gp) {
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
-                Button newButton = createButton(i, j);
+                Button newButton = buttonFactory.createGridButton(i, j);
                 gp.add(newButton, i, j);
             }
         }
     }
 
-    /**
-     * Method for creating a new Button used inside the grid.
-     *
-     * @param x - x coordinate of the created Button
-     * @param y - y coordinate of the created Button
-     * @return Button - JavaFX Button with correct parameters for the game
-     */
-    private Button createButton(int x, int y) {
-        Button newButton = new Button();
-        newButton.setFont(Font.font("verdana", FontWeight.BLACK, FontPosture.REGULAR, 12));
-        newButton.setPrefHeight(30);
-        newButton.setPrefWidth(30);
-
-        EventHandler<MouseEvent> eventHandler = (MouseEvent e) -> {
-            System.out.println("Button :" + e.getButton());
-            // Left click
-            if (e.getButton() == MouseButton.PRIMARY) {
-                System.out.println(e);
-                leftClickButton(x, y, newButton);
-            }
-            // Right click
-            if (e.getButton() == MouseButton.SECONDARY) {
-                System.out.println(e);
-                rightClickButton(x, y, newButton);
-            }
-        };
-        newButton.setOnMouseClicked(eventHandler);
-        // Add button to array
-        buttons[x][y] = newButton;
-
-        return newButton;
+    public void setTurnText(String text) {
+        this.turnTxt.setText(text);
     }
 
-    /**
-     * Method to handle left click.
-     *
-     * @param x - x coordinate of the pressedButton
-     * @param y - y coordinate of the pressedButton
-     * @param pressedButton - Button that is pressed
-     */
-    private void leftClickButton(int x, int y, Button pressedButton) {
-        if (game.getGameover() == false && game.getGameWon() == false) {
-            game.nextTurn();
-
-            if (game.isMine(x, y)) {
-                // Color red
-                pressedButton.setStyle("-fx-background-color: #ff0000; ");
-                pressedButton.setText("X");
-                this.turnTxt.setText("GAME OVER!");
-
-                if (game.getGameover() == false) {
-                    game.setGameOver(true);
-                    revealMines();
-                }
-
-            } else {
-                pressedButton.setText(" ");
-                handleEmptySquare(x, y);
-                this.turnTxt.setText("Turn: " + game.getTurn());
-            }
-
-            pressedButton.setDisable(true);
+    public String getTurnText() {
+        if (turnTxt != null) {
+            return this.turnTxt.getText();
         }
+        return "Sick people avoided: 0";
     }
 
-    /**
-     * Method to handle right click.
-     *
-     * @param pressedButton - Button that is pressed
-     */
-    private void rightClickButton(int x, int y, Button pressedButton) {
-        if (game.getGameover() == false && game.getGameWon() == false) {
-            if (pressedButton.getText().equals("!")) {
-                pressedButton.setText("");
-                game.setFlagged(x, y, false);
-                game.updateGameWon();
-            } else {
-                pressedButton.setText("!");
-                game.setFlagged(x, y, true);
-                game.updateGameWon();
-            }
+    public void setPlayerText(String text) {
+        this.playerTxt.setText(text);
+    }
 
+    public String getPlayerText() {
+        if (playerTxt != null) {
+            return this.playerTxt.getText();
         }
-    }
-
-    /**
-     * Method to reveal all mines.
-     *
-     */
-    private void revealMines() {
-        for (int i = 0; i < game.getLength(); i++) {
-            for (int j = 0; j < game.getLength(); j++) {
-                if (game.isMine(i, j)) {
-                    Button current = buttons[i][j];
-                    current.setStyle("-fx-background-color: #ff0000; ");
-                    current.setText("X");
-                }
-            }
-        }
-
-    }
-
-    /**
-     * Method to handle right click on an empty square. Calls recursive method
-     * openSquaresRecursive.
-     *
-     * @param x - width coordinate of the starting click
-     * @param y - height coordinate of the starting click
-     */
-    public void handleEmptySquare(int x, int y) {
-        boolean[][] visited = new boolean[length][length];
-        openSquaresRecursive(x, y, visited);
-
-    }
-
-    /**
-     * Recursive method for right clicking connected squares of the starting
-     * square.
-     *
-     * @param x - width coordinate
-     * @param y - height coordinate
-     * @param visited - Boolean 2D-array of visited squares
-     */
-    public void openSquaresRecursive(int x, int y, boolean[][] visited) {
-        visited[x][y] = true;
-
-        for (int i = x - 1; i < x + 2; i++) {
-            for (int j = y - 2; j < y + 2; j++) {
-                // If inside grid and not visited
-                if (game.insideGrid(i, j) && !visited[i][j]) {
-                    // If no neighbours and not holding a mine
-                    if (game.checkNeighbours(i, j) == 0 && !game.isMine(i, j)) {
-                        buttons[i][j].setDisable(true);
-                        openSquaresRecursive(i, j, visited);
-                    } else {
-                        // If button is not disabled and not marked as a mine by user
-                        if (!buttons[i][j].isDisable() && !buttons[i][j].getText().equals("!")) {
-                            // Edit button text to show number of neighbouring mines
-                            if (game.checkNeighbours(i, j) > 0 && !game.isMine(i, j)) {
-                                buttons[i][j].setText("" + game.checkNeighbours(i, j));
-                                buttons[i][j].setDisable(true);
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        return "";
     }
 }
