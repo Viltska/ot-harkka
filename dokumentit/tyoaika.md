@@ -7,6 +7,6 @@
 | 3      | 24    | Lisätty ominaisuuksia ja logiikkaa|
 | 4      | 10    | Lisätty kuvia|
 | 5      | 0    | Pääsiäinen |
-| 6      | 0    |       |
-| 7      | 0    |       |
-| yht.   | 61    |       |
+| 6      | 1    | Release lisäys |
+| 7      | 10    | Ohjelman viimeistely ja loppupalautus     |
+| yht.   | 72    |       |
