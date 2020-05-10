@@ -7,6 +7,10 @@ Testikattavuuden ulkopuolelle on jätetty JavaFX elementit.
 
 <img src="https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/kuvat/testikattavuus.png">
 
+## Toiminnallisuudet
+
+Kaikki määrittelydokumentissä määritety toiminnallisuudet löytyvät ohjelmasta.
+
 
 
 
