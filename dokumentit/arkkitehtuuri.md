@@ -21,9 +21,7 @@ Ohjelman pakkauskaavio on seuraavanlainen:
 
 <img src="https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/kaaviot/pakkauskaavio.jpg" width="300">
 
-## Päätoiminnallisuudet
-
-Muutamia esimerkkejä ohjelman toiminnasta.
+Ohjelman tallentaa pitää yllä pelitilannetta Game luokassa joka luo ja ylläpitää miinaharavapeliä. GUI luokka pitää yllä käyttöliittymästä ja päivittää käyttäjän syötteet Game luokkaan.
 
 ### Uusi peli
 
