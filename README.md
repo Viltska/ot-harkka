@@ -3,11 +3,16 @@
 Corona teemaa käyttävä miinaharavapeli joka toimii omassa ikkunassaan, ohjelma käyttää Java 11 versiota ja pohjautuu JavaFX kirjastoon. Ohjelman pitäisi toimia Windows, Mac sekä Linux koneilla.
 
 
-## Harjoitustyö
+## Dokumentaatio
 
-[Määrittelydokumentti](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/maarittely.md)
+[Käyttöohje](https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/kayttoohje.md)
 
-[Minesweeper](https://github.com/Viltska/ot-minesweeper/tree/master/minesweeper)
+[Vaatimusmäärittely](https://github.com/Viltska/ot-harkka/blob/master/dokumentit/maarittely.md)
+
+[Testausdokumentti](https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/testaus.md)
+
+[Työajankirjanpito](https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/tyoaika.md)
+
 
 ## Komentorivitoiminnot
 Ohjelman hakemistossa jossa sijaitsee POM.xml  voidaan ohjelmaa suorittaa ja testata komentoriviltä.
@@ -45,9 +50,7 @@ Kun ohjelma halutaan suorittaa ilman jar tiedostoa
 
 
 
-## Laskarit ja työaikakirjanpito
-
-[Työajankirjanpito](https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/tyoaika.md)
+## Laskarit
 
 ### Viikko 1
 
