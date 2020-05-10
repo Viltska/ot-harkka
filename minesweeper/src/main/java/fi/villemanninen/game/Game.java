@@ -17,7 +17,6 @@ public class Game {
     private int turn;
     private boolean gameOver;
     private boolean gameWon;
-    private boolean[][] flagged;
 
     /**
      * Creates a default game of minesweeper with WIDTH wide square grid. Width
@@ -25,7 +24,6 @@ public class Game {
      */
     public Game() {
         this.grid = new int[this.length][this.length];
-        this.flagged = new boolean[this.length][this.length];
         this.mines = 30;
         this.gameOver = false;
         this.gameWon = true;
@@ -149,7 +147,6 @@ public class Game {
      * Method for setting this game as won.
      *
      */
-
     public void setGameWon() {
         this.gameWon = true;
     }
