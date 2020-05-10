@@ -23,5 +23,8 @@ Ohjelman pakkauskaavio on seuraavanlainen:
 
 Pakkaus fi.villemannienn sisältää App luokan joka sisältää ohjelman main metodin, joka käynnisttää Gui luokan JavaFX Applikaation.
 
-GUI luokasta kutsutaan Game luokkaa joka rakentaa uuden pelin ja pitää yllä pelitilannetta.
+gui paketti sisältää vain GUI luokan, joka käynnistää käyttäjälle ikkunan jossa peliä voidaan pelata.
+GUI luokasta myös kutsutaan Game luokkaa joka rakentaa uuden pelin ja pitää yllä pelitilannetta.
+
+game paketissa ovat Game sekä Player luokat, Player luokka on hyvin yksinkertainen ja se on luotu mahdollista laajennusta varten. Game luokka luo ja pitää yllä käyttäjän miinaharava peliä, kaikki pelin logiikka on pyritty sisällyttämään Game luokkaan.
 
