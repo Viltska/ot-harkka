@@ -13,6 +13,12 @@ Corona teemaa käyttävä miinaharavapeli joka toimii omassa ikkunassaan, ohjelm
 
 [Työajankirjanpito](https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/tyoaika.md)
 
+## Releaset
+
+[Viikko 6](https://github.com/Viltska/ot-minesweeper/releases/tag/Release)
+
+[Loppupalautus]
+
 
 ## Komentorivitoiminnot
 Ohjelman hakemistossa jossa sijaitsee POM.xml  voidaan ohjelmaa suorittaa ja testata komentoriviltä.
