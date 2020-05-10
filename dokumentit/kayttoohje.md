@@ -1,6 +1,6 @@
 # Kayttöohje
 
-Lataa sovelluksen uusin [release]("https://github.com/Viltska/ot-minesweeper/releases/tag/1.1").
+Lataa sovelluksen uusin [release](https://github.com/Viltska/ot-minesweeper/releases/tag/1.1).
 
 ## Suorittaminen
 
