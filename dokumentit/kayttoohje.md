@@ -1,13 +1,13 @@
 # Kayttöohje
 
-Lataa sovelluksen uusin release.
+Lataa sovelluksen uusin [release]("https://github.com/Viltska/ot-minesweeper/releases/tag/1.1").
 
 ## Suorittaminen
 
 Ohjelman voi suorittaa komennolla.
 
 ```
-java -jar App.jar
+java -jar coronasweeper.jar
 ```
 
 ## Pelaaminen
