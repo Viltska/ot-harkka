@@ -30,7 +30,6 @@ Ohjelman hakemistossa jossa sijaitsee POM.xml  voidaan ohjelmaa suorittaa ja tes
 Kun ohjelma halutaan suorittaa ilman jar tiedostoa
 
 - Ohjelman suorittaminen tapahtuu komennolla:
-
 <code> mvn compile exec:java -Dexec.mainClass=fi.villemanninen.App </code>
 
 ### Testaaminen 
@@ -41,7 +40,6 @@ Kun ohjelma halutaan suorittaa ilman jar tiedostoa
 ### Pakkaaminen
 
 - Ohjelman pakkaaminen jar tiedostoksi:
-
 <code> mvn package </code>
 
 ### JavaDoc
@@ -50,8 +48,8 @@ Kun ohjelma halutaan suorittaa ilman jar tiedostoa
 <code> mvn jacoco:report </code>
 
 ### Checkstyle
-- Checkstyle raportti:
 
+- Checkstyle raportti:
 <code> mvn checkstyle:checkstyle </code>
 
 
