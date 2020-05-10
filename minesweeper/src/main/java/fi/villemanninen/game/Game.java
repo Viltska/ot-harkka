@@ -86,19 +86,6 @@ public class Game {
     }
 
     /**
-     * Method for setting flagged value for a square.
-     *
-     * @param x - width coordinate
-     * @param y - height coordinate
-     * @param value - Boolean value
-     */
-    public void setFlagged(int x, int y, boolean value) {
-        if (insideGrid(x, y)) {
-            flagged[x][y] = value;
-        }
-    }
-
-    /**
      * Method to advance to next turn. If incremented turn is equal to empty
      * squares of the game method calls setGameOver(); ending the game.
      *
@@ -158,6 +145,15 @@ public class Game {
         return x >= 0 && x < length && y >= 0 && y < length;
     }
 
+    /**
+     * Method for setting this game as won.
+     *
+     */
+
+    public void setGameWon() {
+        this.gameWon = true;
+    }
+
     public int getTurn() {
         return this.turn;
     }
@@ -170,10 +166,6 @@ public class Game {
         this.gameOver = bool;
     }
 
-    public void setGameWon() {
-        this.gameWon = true;
-    }
-
     public boolean getGameover() {
         return this.gameOver;
     }
@@ -183,7 +175,7 @@ public class Game {
     }
 
     public int getLength() {
-        return length;
+        return this.length;
     }
 
     public void setPlayer(String name) {

@@ -162,7 +162,7 @@ public class Gui extends Application {
     }
 
     /**
-     * Method to generate a game scene,
+     * Method to generate a game scene.
      *
      * @return Scene - the game scene.
      */
@@ -237,10 +237,20 @@ public class Gui extends Application {
         }
     }
 
+    /**
+     * Method for changing the turn text on the GUI.
+     *
+     * @param text - Text that updated to the GUI
+     */
     public void setTurnText(String text) {
         this.turnTxt.setText(text);
     }
 
+    /**
+     * Returns the GUI turn text as a String.
+     *
+     * @return String - turn text
+     */
     public String getTurnText() {
         if (turnTxt != null) {
             return this.turnTxt.getText();
@@ -248,10 +258,20 @@ public class Gui extends Application {
         return "Sick people avoided: 0";
     }
 
+    /**
+     * Method for setting the player text on the GUI.
+     *
+     * @param text - Given text that is updated to the GUI
+     */
     public void setPlayerText(String text) {
         this.playerTxt.setText(text);
     }
 
+    /**
+     * Returns player text as a String.
+     *
+     * @return String - player text of the GUI
+     */
     public String getPlayerText() {
         if (playerTxt != null) {
             return this.playerTxt.getText();
