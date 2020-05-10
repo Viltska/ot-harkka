@@ -32,17 +32,22 @@ Kun ohjelma halutaan suorittaa ilman jar tiedostoa
 - Ohjelman suorittaminen tapahtuu komennolla:
 <code> mvn compile exec:java -Dexec.mainClass=fi.villemanninen.App </code>
 
-### Testaaminen 
+### JUnit 
 
 - Ohjelman testaaminen komentoriviltä:
  <code> mvn test </code>
+ 
+### JavaDoc
+ 
+ - Ohjelman JavaDoc luominen:
+ <code> mvn javadoc:javadoc </code>
  
 ### Pakkaaminen
 
 - Ohjelman pakkaaminen jar tiedostoksi:
 <code> mvn package </code>
 
-### JavaDoc
+### Jacoco
 
 - Jacoco testiraportti: 
 <code> mvn jacoco:report </code>
