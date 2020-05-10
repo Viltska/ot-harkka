@@ -11,6 +11,8 @@ Corona teemaa käyttävä miinaharavapeli joka toimii omassa ikkunassaan, ohjelm
 
 [Testausdokumentti](https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/testaus.md)
 
+[Arkkitehtuuri](https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/arkkitehtuuri.md)
+
 [Työajankirjanpito](https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/tyoaika.md)
 
 ## Releaset
