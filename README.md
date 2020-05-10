@@ -1,7 +1,7 @@
 # Ohjelmistotekniikka Kevät 2020 - Minesweeper
-**Ville Manninen**
 
-[Työajankirjanpito](https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/tyoaika.md)
+Corona teemaa käyttävä miinaharavapeli joka toimii omassa ikkunassaan, ohjelma käyttää Java 11 versiota ja pohjautuu JavaFX kirjastoon. Ohjelman pitäisi toimia Windows, Mac sekä Linux koneilla.
+
 
 ## Harjoitustyö
 
@@ -45,7 +45,9 @@ Kun ohjelma halutaan suorittaa ilman jar tiedostoa
 
 
 
-## Tehtavat
+## Laskarit ja työaikakirjanpito
+
+[Työajankirjanpito](https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/tyoaika.md)
 
 ### Viikko 1
 
