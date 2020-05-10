@@ -12,7 +12,7 @@
 ## Komentorivitoiminnot
 Ohjelman hakemistossa jossa sijaitsee POM.xml  voidaan ohjelmaa suorittaa ja testata komentoriviltä.
 
-- Raportit ilmestyvät kansioon /target, ne voidaan poistaa komennolla <code> mvn clean </code>
+- Raportit ja tiedostot ilmestyvät projektin sisälle kansioon nimeltään /target, ne voidaan poistaa komennolla <code> mvn clean </code>
 
 ### Lähdekoodiohjelman suorittaminen
 
@@ -26,6 +26,12 @@ Kun ohjelma halutaan suorittaa ilman jar tiedostoa
 
 - Ohjelman testaaminen komentoriviltä:
  <code> mvn test </code>
+ 
+### Pakkaaminen
+
+- Ohjelman pakkaaminen jar tiedostoksi:
+
+<code> mvn package </code>
 
 ### JavaDoc
 
@@ -35,7 +41,7 @@ Kun ohjelma halutaan suorittaa ilman jar tiedostoa
 ### Checkstyle
 - Checkstyle raportti:
 
-<code> mvn checkstyle:checkstyle: </code>
+<code> mvn checkstyle:checkstyle </code>
 
 
 
