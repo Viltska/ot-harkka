@@ -1,6 +1,6 @@
 # Ohjelmistotekniikka Kevät 2020 - Minesweeper
 
-Corona teemaa käyttävä miinaharavapeli joka toimii omassa ikkunassaan, ohjelma käyttää Java 11 versiota ja pohjautuu JavaFX kirjastoon. Ohjelman pitäisi toimia Windows, Mac sekä Linux koneilla.
+Corona teemaa käyttävä miinaharavapeli joka toimii omassa ikkunassaan, ohjelma käyttää Java 11 versiota ja pohjautuu JavaFX kirjastoon. Ohjelman pitäisi toimia Windows-, Mac- sekä Linux-käyttöjärjestelmillä.
 
 
 ## Dokumentaatio
