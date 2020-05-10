@@ -11,6 +11,11 @@ Testikattavuuden ulkopuolelle on jätetty JavaFX elementit.
 
 Kaikki määrittelydokumentissä määritety toiminnallisuudet löytyvät ohjelmasta.
 
+## Laatuongelmat
+
+* Käytettyjen kuvien sekä ohjelmaikkunan skaalaaminen eri näyttöjen natiiviresoluutioille on huonolaatuista.
+
+
 
 
 
