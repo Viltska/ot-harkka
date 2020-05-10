@@ -78,33 +78,10 @@ public class Game {
      * @param x - width coordinate of the mine
      * @param y - height coordinate of the mine
      */
-    public void setMine(int x, int y) {
+    public void putMine(int x, int y) {
         if (!isMine(x, y)) {
             grid[x][y] = 1;
             mines++;
-        }
-    }
-
-    /**
-     * Method for checking if the game is won.
-     *
-     */
-    public void updateGameWon() {
-        int correctFlags = 0;
-        int flags = 0;
-
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < length; i++) {
-                if (flagged[i][j]) {
-                    flags++;
-                    if (isMine(i, j)) {
-                        correctFlags++;
-                    }
-                }
-            }
-        }
-        if (correctFlags == mines && flags == correctFlags) {
-            gameWon = true;
         }
     }
 
@@ -128,58 +105,6 @@ public class Game {
      */
     public void nextTurn() {
         this.turn++;
-    }
-
-    /**
-     * Returns the current turn of the game.
-     *
-     * @return int turn - turn number
-     */
-    public int getTurn() {
-        return this.turn;
-    }
-
-    /**
-     * Return the number of mines.
-     *
-     * @return int mines - number of mines
-     */
-    public int getMines() {
-        return this.mines;
-    }
-
-    /**
-     * Sets gameOver value.
-     *
-     * @param bool - true or false
-     */
-    public void setGameOver(boolean bool) {
-        this.gameOver = bool;
-    }
-
-    /**
-     * Sets game won to true.
-     */
-    public void setGameWon() {
-        this.gameWon = true;
-    }
-
-    /**
-     * Returns true if game is over else returns false.
-     *
-     * @return Boolean - return gameOver
-     */
-    public boolean getGameover() {
-        return this.gameOver;
-    }
-
-    /**
-     * Returns true if the game is won, else returns false.
-     *
-     * @return Boolean - gameWon value
-     */
-    public boolean getGameWon() {
-        return this.gameWon;
     }
 
     /**
@@ -233,31 +158,40 @@ public class Game {
         return x >= 0 && x < length && y >= 0 && y < length;
     }
 
-    /**
-     * Method to get length of the game.
-     *
-     * @return length - game width
-     */
+    public int getTurn() {
+        return this.turn;
+    }
+
+    public int getMines() {
+        return this.mines;
+    }
+
+    public void setGameOver(boolean bool) {
+        this.gameOver = bool;
+    }
+
+    public void setGameWon() {
+        this.gameWon = true;
+    }
+
+    public boolean getGameover() {
+        return this.gameOver;
+    }
+
+    public boolean getGameWon() {
+        return this.gameWon;
+    }
+
     public int getLength() {
         return length;
     }
 
-    /**
-     * Creates a player with a name, only uses first 20 characters of the name.
-     *
-     * @param name - name of the player
-     */
     public void setPlayer(String name) {
         Player newPlayer = new Player(name);
         this.player = newPlayer;
 
     }
 
-    /**
-     * Method to get the player of the game.
-     *
-     * @return Player - player of the game
-     */
     public Player getPlayer() {
         return this.player;
     }

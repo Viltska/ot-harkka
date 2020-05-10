@@ -4,9 +4,9 @@ import fi.villemanninen.gui.Gui;
 import javafx.application.Application;
 
 /**
- * Class to create and launching minesweeper Application.
+ * Class to create and launching minesweeper like Application.
  *
- * @version 1.0
+ * @version 1.1
  * @author Ville Manninen
  */
 public class App {

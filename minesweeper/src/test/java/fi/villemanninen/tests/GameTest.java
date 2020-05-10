@@ -129,10 +129,10 @@ public class GameTest {
     public void testSetMine() {
         Game game = new Game();
         assertEquals(false, game.isMine(0, 0));
-        game.setMine(0, 0);
+        game.putMine(0, 0);
         assertEquals(true, game.isMine(0, 0));
         assertEquals(31, game.getMines());
-        game.setMine(0, 0);
+        game.putMine(0, 0);
         assertEquals(31, game.getMines());
     }
 
@@ -140,9 +140,9 @@ public class GameTest {
     public void testNeighbours() {
         Game game = new Game();
         assertEquals(0, game.checkNeighbours(0, 0));
-        game.setMine(1, 1);
-        game.setMine(2, 1);
-        game.setMine(1, 2);
+        game.putMine(1, 1);
+        game.putMine(2, 1);
+        game.putMine(1, 2);
 
         assertEquals(1, game.checkNeighbours(0, 0));
         assertEquals(2, game.checkNeighbours(1, 0));

@@ -32,7 +32,7 @@ public class Gui extends Application {
 
     private Stage stage;
     private int length;
-    private Game game = new Game(50);
+    private Game game = new Game(10);
     private Label playerTxt;
     private Label turnTxt;
     private ButtonFactory buttonFactory;
@@ -121,7 +121,7 @@ public class Gui extends Application {
         Label txt = new Label("Your name: ");
         txt.setScaleX(1.5);
         txt.setScaleY(1.5);
-        
+
         TextField textField = new TextField();
 
         // New game button

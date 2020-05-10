@@ -5,7 +5,6 @@ package fi.villemanninen.tests;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import fi.villemanninen.gui.Gui;
 import org.junit.After;
 import org.junit.AfterClass;

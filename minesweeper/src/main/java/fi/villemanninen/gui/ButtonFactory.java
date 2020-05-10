@@ -19,11 +19,11 @@ import javafx.scene.text.FontWeight;
  * @author Ville Manninen
  */
 public class ButtonFactory {
-
+    
     private Gui gui;
     private Game game;
     private Button buttons[][];
-
+    
     private Image happy;
     private Image sad;
     private Image covid;
@@ -44,7 +44,7 @@ public class ButtonFactory {
             this.sad = new Image(new FileInputStream("src/main/resources/sadguru.png"));
             this.covid = new Image(new FileInputStream("src/main/resources/covid.png"));
             this.sick = new Image(new FileInputStream("src/main/resources/sick.png"));
-
+            
         } catch (FileNotFoundException e) {
             System.out.println(e);
         }
@@ -62,21 +62,21 @@ public class ButtonFactory {
         newButton.setFont(Font.font("verdana", FontWeight.BLACK, FontPosture.REGULAR, 12));
         newButton.setPrefHeight(30);
         newButton.setPrefWidth(30);
-
+        
         ImageView iView = new ImageView();
         newButton.setGraphic(iView);
-
+        
         EventHandler<MouseEvent> eventHandler = (MouseEvent e) -> {
             System.out.println("Button :" + e.getButton());
 
             // Left click
             if (e.getButton() == MouseButton.PRIMARY) {
-
+                
                 leftClickButton(x, y, newButton);
             }
             // Right click
             if (e.getButton() == MouseButton.SECONDARY) {
-
+                
                 rightClickButton(x, y, newButton);
             }
         };
@@ -92,21 +92,21 @@ public class ButtonFactory {
      */
     public Button createMiddleButton() {
         Button middleButton = new Button();
-
+        
         ImageView iView = new ImageView(sad);
         iView.setFitHeight(100);
         iView.setFitWidth(100);
         middleButton.setGraphic(iView);
-
+        
         EventHandler<MouseEvent> eventHandler = (MouseEvent e) -> {
             System.out.println("Button :" + e.getButton());
             if (e.getButton() == MouseButton.PRIMARY) {
                 gui.changeToStartScene();
             }
         };
-
+        
         middleButton.setOnMouseClicked(eventHandler);
-
+        
         return middleButton;
     }
 
@@ -118,20 +118,20 @@ public class ButtonFactory {
      */
     public Button createStartButton() {
         Button startButton = new Button();
-
+        
         ImageView iView = new ImageView(happy);
         iView.setFitHeight(100);
         iView.setFitWidth(100);
         startButton.setGraphic(iView);
-
+        
         EventHandler<MouseEvent> eventHandler = (MouseEvent e) -> {
             gui.changeToGameScene();
         };
-
+        
         startButton.setOnMouseClicked(eventHandler);
-
+        
         return startButton;
-
+        
     }
 
     /**
@@ -144,22 +144,23 @@ public class ButtonFactory {
     public void leftClickButton(int x, int y, Button pressedButton) {
         if (game.getGameover() == false && game.getGameWon() == false) {
             game.nextTurn();
-
+            
             if (game.isMine(x, y)) {
                 gui.setTurnText("You got Infected :(");
-
+                
                 if (game.getGameover() == false) {
                     game.setGameOver(true);
                     revealMines();
                 }
-
+                
             } else {
                 pressedButton.setText(" ");
                 handleEmptySquare(x, y);
                 gui.setTurnText("Sick people avoided: " + (game.getTurn() - 1));
             }
-
+            
             pressedButton.setDisable(true);
+            updateGameWon();
         }
     }
 
@@ -171,7 +172,7 @@ public class ButtonFactory {
      * @param pressedButton
      */
     public void rightClickButton(int x, int y, Button pressedButton) {
-
+        
         if (game.getGameover() == false && game.getGameWon() == false) {
             if (pressedButton.getText().equals("!")) {
                 pressedButton.setText("");
@@ -191,7 +192,7 @@ public class ButtonFactory {
     public void handleEmptySquare(int x, int y) {
         boolean[][] visited = new boolean[game.getLength()][game.getLength()];
         openSquaresRecursive(x, y, visited);
-
+        
     }
 
     /**
@@ -204,7 +205,7 @@ public class ButtonFactory {
      */
     public void openSquaresRecursive(int x, int y, boolean[][] visited) {
         visited[x][y] = true;
-
+        
         for (int i = x - 1; i < x + 2; i++) {
             for (int j = y - 2; j < y + 2; j++) {
                 // If inside grid and not visited
@@ -233,14 +234,14 @@ public class ButtonFactory {
      *
      */
     public void revealMines() {
-
+        
         for (int i = 0; i < game.getLength(); i++) {
             for (int j = 0; j < game.getLength(); j++) {
                 if (game.isMine(i, j)) {
                     ImageView iView = new ImageView(covid);
                     iView.setFitHeight(14);
                     iView.setFitWidth(14);
-
+                    
                     Button current = buttons[i][j];
                     current.setText("");
                     current.setStyle("-fx-background-color: #ff0000; ");
@@ -248,6 +249,26 @@ public class ButtonFactory {
                 }
             }
         }
+        
+    }
 
+    /**
+     * Method for checking if the game has been won
+     */
+    public void updateGameWon() {
+        int mines = game.getMines();
+        int squaresLeft = 0;
+        
+        for (int i = 0; i < game.getLength(); i++) {
+            for (int j = 0; j < game.getLength(); j++) {
+                if (!buttons[i][j].isDisabled()) {
+                    squaresLeft++;
+                }
+            }
+        }
+        if (squaresLeft == mines) {
+            game.setGameWon();
+            gui.setTurnText("Vältit kaikki sairaat!");
+        }
     }
 }
