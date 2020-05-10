@@ -17,6 +17,10 @@ Molemmat näkymät ovat oma Scene-olionsa jotka rakennetaan GUI luokassa, GUI lu
 
 ## Sovelluslogiikka
 
+Ohjelman pakkauskaavio on seuraavanlainen: 
+
+<img src="https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/kaaviot/pakkauskaavio.jpg" width="300>
+
 ## Päätoiminnallisuudet
 
 Muutamia esimerkkejä ohjelman toiminnasta.
