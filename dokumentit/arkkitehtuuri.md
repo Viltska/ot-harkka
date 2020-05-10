@@ -6,7 +6,7 @@ Ohjelmalla on seuraava rakenne:
 
 <img src="https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/kaaviot/rakenne.jpg" width="200">
 
-Pakkaus fi.villemannienn sisältää App luokan joka sisältää ohjelman main metodin, joka käynnisttää Gui luokan JavaFX Applikaation.
+
 
 ## Käyttöliittymä
 
@@ -21,9 +21,7 @@ Ohjelman pakkauskaavio on seuraavanlainen:
 
 <img src="https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/kaaviot/pakkauskaavio.jpg" width="300">
 
-Ohjelman tallentaa pitää yllä pelitilannetta Game luokassa joka luo ja ylläpitää miinaharavapeliä. GUI luokka pitää yllä käyttöliittymästä ja päivittää käyttäjän syötteet Game luokkaan.
+Pakkaus fi.villemannienn sisältää App luokan joka sisältää ohjelman main metodin, joka käynnisttää Gui luokan JavaFX Applikaation.
 
-### Uusi peli
+GUI luokasta kutsutaan Game luokkaa joka rakentaa uuden pelin ja pitää yllä pelitilannetta.
 
-### Ruudun klikkaaminen
-  
