@@ -6,6 +6,8 @@ Ohjelmalla on seuraava rakenne:
 
 <img src="https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/kaaviot/rakenne.jpg" width="200">
 
+Pakkaus fi.villemannienn sisältää App luokan joka sisältää ohjelman main metodin, main metodi käynnisttää GUI luokan.
+
 ## Käyttöliittymä
 
 Ohjelma avautuu omaan ikkunaan, ikkunalla on kaksi näkymää. Menu-näkymä jossa ohjelma esitellään sekä käyttäjä voi antaa oman nimensä.
