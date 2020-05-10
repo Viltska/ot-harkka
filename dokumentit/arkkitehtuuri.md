@@ -4,7 +4,7 @@
 
 Ohjelmalla on seuraava rakenne:
 
-<img src="https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/kaaviot/rakenne.jpg" width="400">
+<img src="https://github.com/Viltska/ot-minesweeper/blob/master/dokumentit/kaaviot/rakenne.jpg" width="200">
 
 ## Käyttöliittymä
 
