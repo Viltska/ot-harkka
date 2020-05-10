@@ -32,7 +32,7 @@ public class Gui extends Application {
 
     private Stage stage;
     private int length;
-    private Game game = new Game(10);
+    private Game game = new Game(50);
     private Label playerTxt;
     private Label turnTxt;
     private ButtonFactory buttonFactory;
