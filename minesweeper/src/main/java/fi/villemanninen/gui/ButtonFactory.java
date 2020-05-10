@@ -40,10 +40,10 @@ public class ButtonFactory {
         this.game = game;
         this.buttons = new Button[game.getLength()][game.getLength()];
         try {
-            this.happy = new Image(new FileInputStream("src/main/resources/happyguru.png"));
-            this.sad = new Image(new FileInputStream("src/main/resources/sadguru.png"));
-            this.covid = new Image(new FileInputStream("src/main/resources/covid.png"));
-            this.sick = new Image(new FileInputStream("src/main/resources/sick.png"));
+            this.happy = new Image(new FileInputStream("src/main/resources/images/happyguru.png"));
+            this.sad = new Image(new FileInputStream("src/main/resources/images/sadguru.png"));
+            this.covid = new Image(new FileInputStream("src/main/resources/images/covid.png"));
+            this.sick = new Image(new FileInputStream("src/main/resources/images/sick.png"));
 
         } catch (FileNotFoundException e) {
             System.out.println(e);

@@ -52,8 +52,8 @@ public class Gui extends Application {
         this.buttonFactory = new ButtonFactory(this, game);
 
         try {
-            this.logo = new Image(new FileInputStream("src/main/resources/biohazard.png"));
-            this.sick = new Image(new FileInputStream("src/main/resources/sick.png"));
+            this.logo = new Image(new FileInputStream("src/main/resources/images/biohazard.png"));
+            this.sick = new Image(new FileInputStream("src/main/resources/images/sick.png"));
             stage.getIcons().add(logo);
 
         } catch (FileNotFoundException e) {
