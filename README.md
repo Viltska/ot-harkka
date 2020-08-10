@@ -19,7 +19,7 @@ Corona teemaa käyttävä miinaharavapeli joka toimii omassa ikkunassaan, ohjelm
 
 [Viikko 6](https://github.com/Viltska/ot-minesweeper/releases/tag/Release)
 
-[Loppupalautus]
+[Release](https://github.com/Viltska/ot-minesweeper/releases/tag/1.3)
 
 
 ## Komentorivitoiminnot
