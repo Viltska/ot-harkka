@@ -1,8 +1,6 @@
-package fi.villemanninen.gui;
+package cs.helsinki.fi.gui;
 
-import fi.villemanninen.game.Game;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import cs.helsinki.fi.game.Game;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -24,10 +22,9 @@ public class ButtonFactory {
     private Game game;
     private Button buttons[][];
 
-    private Image happy;
-    private Image sad;
-    private Image covid;
-    private Image sick;
+    private Image mineIMG;
+    private Image smileyIMG;
+    private Image smallMineIMG;
 
     /**
      * Creates a new ButtonFactory class.
@@ -39,14 +36,26 @@ public class ButtonFactory {
         this.gui = gui;
         this.game = game;
         this.buttons = new Button[game.getLength()][game.getLength()];
-        try {
-            this.happy = new Image(new FileInputStream("src/main/resources/images/happyguru.png"));
-            this.sad = new Image(new FileInputStream("src/main/resources/images/sadguru.png"));
-            this.covid = new Image(new FileInputStream("src/main/resources/images/covid.png"));
-            this.sick = new Image(new FileInputStream("src/main/resources/images/sick.png"));
 
-        } catch (FileNotFoundException e) {
+        try {
+
+            ClassLoader classLoader = getClass().getClassLoader();
+            String imageUrl = classLoader.getResource("mine.png").toExternalForm();
+            Image mineImage = new Image(imageUrl);
+
+            String imageUrl2 = classLoader.getResource("small_mine.png").toExternalForm();
+            Image smallImage = new Image(imageUrl2);
+
+            String imageUrl3 = classLoader.getResource("smiley.png").toExternalForm();
+            Image smileyImage = new Image(imageUrl3);
+
+            this.mineIMG = mineImage;
+            this.smallMineIMG = smallImage;
+            this.smileyIMG = smileyImage;
+
+        } catch (Exception e) {
             System.out.println(e);
+
         }
     }
 
@@ -93,7 +102,7 @@ public class ButtonFactory {
     public Button createMiddleButton() {
         Button middleButton = new Button();
 
-        ImageView iView = new ImageView(sad);
+        ImageView iView = new ImageView(smileyIMG);
         iView.setFitHeight(100);
         iView.setFitWidth(100);
         middleButton.setGraphic(iView);
@@ -119,7 +128,7 @@ public class ButtonFactory {
     public Button createStartButton() {
         Button startButton = new Button();
 
-        ImageView iView = new ImageView(happy);
+        ImageView iView = new ImageView(mineIMG);
         iView.setFitHeight(100);
         iView.setFitWidth(100);
         startButton.setGraphic(iView);
@@ -146,7 +155,7 @@ public class ButtonFactory {
             game.nextTurn();
 
             if (game.isMine(x, y)) {
-                gui.setTurnText("You got Infected :(");
+                gui.setTurnText("You have lost a leg!");
 
                 if (game.getGameover() == false) {
                     game.setGameOver(true);
@@ -156,7 +165,7 @@ public class ButtonFactory {
             } else {
                 pressedButton.setText(" ");
                 handleEmptySquare(x, y);
-                gui.setTurnText("Sick people avoided: " + (game.getTurn() - 1));
+                gui.setTurnText("Squares checked: " + (game.getTurn() - 1));
             }
 
             pressedButton.setDisable(true);
@@ -238,7 +247,7 @@ public class ButtonFactory {
         for (int i = 0; i < game.getLength(); i++) {
             for (int j = 0; j < game.getLength(); j++) {
                 if (game.isMine(i, j)) {
-                    ImageView iView = new ImageView(covid);
+                    ImageView iView = new ImageView(smallMineIMG);
                     iView.setFitHeight(14);
                     iView.setFitWidth(14);
 
@@ -268,7 +277,7 @@ public class ButtonFactory {
         }
         if (squaresLeft == mines) {
             game.setGameWon();
-            gui.setTurnText("You avoided everyone! You win!");
+            gui.setTurnText("You have found all the mines!");
         }
     }
 }

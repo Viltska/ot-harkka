@@ -1,4 +1,4 @@
-package fi.villemanninen.gui;
+package cs.helsinki.fi.gui;
 
 //JavaFX
 import javafx.application.Application;
@@ -17,9 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 // scr package imports
-import fi.villemanninen.game.Game;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import cs.helsinki.fi.game.Game;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -36,8 +34,9 @@ public class Gui extends Application {
     private Label playerTxt;
     private Label turnTxt;
     private ButtonFactory buttonFactory;
-    private Image logo;
-    private Image sick;
+    private Image mineIMG;
+    private Image smileyIMG;
+    private Image smallMineIMG;
 
     /**
      * Executes the graphical user interface.
@@ -53,15 +52,26 @@ public class Gui extends Application {
 
         try {
 
-            this.logo = new Image(new FileInputStream("src/main/resources/images/biohazard.png"));
-            this.sick = new Image(new FileInputStream("src/main/resources/images/sick.png"));
-            stage.getIcons().add(logo);
+            ClassLoader classLoader = getClass().getClassLoader();
+            String imageUrl = classLoader.getResource("mine.png").toExternalForm();
+            Image mineImage = new Image(imageUrl);
 
-        } catch (FileNotFoundException e) {
+            String imageUrl2 = classLoader.getResource("small_mine.png").toExternalForm();
+            Image smallImage = new Image(imageUrl2);
+
+            String imageUrl3 = classLoader.getResource("smiley.png").toExternalForm();
+            Image smileyImage = new Image(imageUrl3);
+
+            this.mineIMG = mineImage;
+            this.smallMineIMG = smallImage;
+            this.smileyIMG = smileyImage;
+            stage.getIcons().add(smallMineIMG);
+
+        } catch (Exception e) {
             System.out.println(e);
 
         }
-        stage.setTitle("Corona Sweeper");
+        stage.setTitle("MineSweeper");
         stage.setScene(getStartScene());
         stage.show();
     }
@@ -84,20 +94,15 @@ public class Gui extends Application {
         vb2.setAlignment(Pos.CENTER);
         vb2.setPadding(new Insets(80));
         vb2.setSpacing(40);
-        Label header1 = new Label("Corona Sweeper!");
+        Label header1 = new Label("Minesweeper");
 
         VBox headerVB = new VBox();
         headerVB.setAlignment(Pos.CENTER);
         headerVB.setSpacing(16);
 
-        Label header2 = new Label("Do your best to avoid infected people");
-
-        ImageView iView = new ImageView(sick);
-        iView.setFitHeight(40);
-        iView.setFitWidth(40);
+        Label header2 = new Label("Try to find all the mines!");
 
         headerVB.getChildren().add(header2);
-        headerVB.getChildren().add(iView);
 
         header1.setStyle("-fx-font-weight: bold");
         header2.setStyle("-fx-font-weight: bold");
@@ -108,7 +113,7 @@ public class Gui extends Application {
         header2.setScaleX(2);
         header2.setScaleY(2);
 
-        ImageView iView2 = new ImageView(logo);
+        ImageView iView2 = new ImageView(mineIMG);
         iView2.setFitHeight(180);
         iView2.setFitWidth(180);
 
@@ -183,7 +188,7 @@ public class Gui extends Application {
 
         // Top labels 
         Label txt1 = new Label("Player: " + game.getPlayer().getName());
-        Label txt2 = new Label("People avoided: 0");
+        Label txt2 = new Label("Clicks: 0");
 
         txt1.setScaleX(1.5);
         txt1.setScaleY(1.5);
@@ -256,7 +261,7 @@ public class Gui extends Application {
         if (turnTxt != null) {
             return this.turnTxt.getText();
         }
-        return "Sick people avoided: 0";
+        return "Squares opened: 0";
     }
 
     /**

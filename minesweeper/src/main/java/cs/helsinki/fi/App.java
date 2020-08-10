@@ -1,6 +1,6 @@
-package fi.villemanninen;
+package cs.helsinki.fi;
 
-import fi.villemanninen.gui.Gui;
+import cs.helsinki.fi.gui.Gui;
 import javafx.application.Application;
 
 /**

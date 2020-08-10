@@ -1,4 +1,4 @@
-package fi.villemanninen.game;
+package cs.helsinki.fi.game;
 
 /**
  * Represents a player of the game.

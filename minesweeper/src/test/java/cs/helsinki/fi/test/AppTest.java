@@ -1,6 +1,6 @@
-package fi.villemanninen.tests;
+package cs.helsinki.fi.test;
 
-import fi.villemanninen.App;
+import cs.helsinki.fi.App;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

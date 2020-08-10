@@ -1,6 +1,6 @@
-package fi.villemanninen.tests;
+package cs.helsinki.fi.test;
 
-import fi.villemanninen.game.Player;
+import cs.helsinki.fi.game.Player;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

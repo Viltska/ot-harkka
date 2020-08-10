@@ -1,7 +1,7 @@
-package fi.villemanninen.tests;
+package cs.helsinki.fi.test;
 
-import fi.villemanninen.game.Game;
-import fi.villemanninen.game.Player;
+import cs.helsinki.fi.game.Game;
+import cs.helsinki.fi.game.Player;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

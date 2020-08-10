@@ -1,4 +1,4 @@
-package fi.villemanninen.game;
+package cs.helsinki.fi.game;
 
 import java.util.Random;
 
