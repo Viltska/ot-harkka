@@ -23,13 +23,16 @@ Corona teemaa käyttävä miinaharavapeli joka toimii omassa ikkunassaan, ohjelm
 
 
 ## Komentorivitoiminnot
+
 Ohjelman hakemistossa jossa sijaitsee POM.xml  voidaan ohjelmaa suorittaa ja testata komentoriviltä.
 
 - Raportit ja tiedostot ilmestyvät projektin sisälle kansioon nimeltään /target, ne voidaan poistaa komennolla <code> mvn clean </code>
 
 ### Lähdekoodiohjelman suorittaminen
 
-Kun ohjelma halutaan suorittaa ilman jar tiedostoa
+Voit paketoida ohjelman komennolla `mvn package` jonka jälkeen /target kansioon ilmestyy suoritettava .jar tiedosto
+
+Kun ohjelma halutaan suorittaa ilman .jar tiedostoa
 
 - Ohjelman suorittaminen tapahtuu komennolla:
 <code> mvn compile exec:java -Dexec.mainClass=fi.villemanninen.App </code>
